@@ -762,7 +762,7 @@ nav {
         }
 
         .royal-special:before {
-            content: '👑';
+            content: '';
             position: absolute;
             top: -15px;
             right: 30px;
@@ -1285,6 +1285,8 @@ nav {
         @keyframes twinkle {
             0%, 100% { opacity: 0.1; transform: scale(1); }
             50% { opacity: 0.8; transform: scale(1.2); }
+
+            
         }/* ================================================= */
 /* PHONE-ONLY NAVBAR & MENU RE-ORGANIZATION (PREMIUM) */
 /* ================================================= */
@@ -1427,6 +1429,64 @@ nav {
     }
 }
 
+    /* Additional styling for better organization */
+    .royal-services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 40px;
+        perspective: 1000px;
+    }
+    
+    .royal-service-card p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: var(--cream);
+        opacity: 0.9;
+    }
+    
+    @media (max-width: 768px) {
+        .royal-services-grid {
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+        
+        .royal-service-card {
+            padding: 40px 30px;
+        }
+        
+        .service-icon {
+            font-size: 3.5rem;
+            padding: 20px;
+        }
+        
+        .royal-service-card h3 {
+            font-size: 1.8rem;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .services-section {
+            padding: 80px 0;
+        }
+        
+        .royal-service-card {
+            padding: 30px 20px;
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            padding: 15px;
+        }
+        
+        .royal-service-card h3 {
+            font-size: 1.6rem;
+        }
+        
+        .royal-service-card p {
+            font-size: 1rem;
+        }
+    }
+</style>
     </style>
 </head>
 <body>
@@ -2220,50 +2280,130 @@ nav {
         
     </div>
 </section>
-    <!-- Services Section -->
-    <section class="services-section" id="services">
-        <div class="container">
-            <div class="section-title">
-                <h2>ROYAL SERVICES</h2>
-                <p class="script-font" style="font-size: 2rem; margin-top: 20px;">Experience Royal Treatment</p>
+<section class="services-section" id="services">
+    <div class="container">
+        <div class="section-title">
+            <h2>ROYAL SERVICES</h2>
+            <p class="script-font" style="font-size: 2rem; margin-top: 20px;">Experience Royal Treatment</p>
+        </div>
+        
+        <div class="royal-services-grid">
+            <!-- Original Services -->
+            <div class="royal-service-card">
+                <div class="service-icon">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <h3>Royal Dine-In</h3>
+                <p>Experience our authentic cuisine in a royal dining environment with valet service</p>
             </div>
             
-            <div class="royal-services-grid">
-                <div class="royal-service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-crown"></i>
-                    </div>
-                    <h3>Royal Dine-In</h3>
-                    <p>Experience our authentic cuisine in a royal dining environment with valet service</p>
+            <div class="royal-service-card">
+                <div class="service-icon">
+                    <i class="fas fa-horse"></i>
                 </div>
-                
-                <div class="royal-service-card royal-special">
-                    <div class="service-icon">
-                        <i class="fas fa-horse"></i>
-                    </div>
-                    <h3>Royal Delivery</h3>
-                    <p>Get your royal feast delivered to your palace. Call: 0330-6863355</p>
+                <h3>Royal Delivery</h3>
+                <p>Get your royal feast delivered to your palace. Call: 0330-6863355</p>
+            </div>
+            
+            <div class="royal-service-card">
+                <div class="service-icon">
+                    <i class="fas fa-gem"></i>
                 </div>
-                
-                <div class="royal-service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-gem"></i>
-                    </div>
-                    <h3>Catering Services</h3>
-                    <p>Make your events royal with our professional catering for weddings and gatherings</p>
+                <h3>Catering Services</h3>
+                <p>Make your events royal with our professional catering for weddings and gatherings</p>
+            </div>
+            
+            <div class="royal-service-card">
+                <div class="service-icon">
+                    <i class="fas fa-champagne-glasses"></i>
                 </div>
-                
-                <div class="royal-service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-champagne-glasses"></i>
-                    </div>
-                    <h3>Private Events</h3>
-                    <p>Host your celebrations in our exclusive royal banquet halls</p>
+                <h3>Private Events</h3>
+                <p>Host your celebrations in our exclusive royal banquet halls</p>
+            </div>
+            
+            <!-- New Accessibility Services -->
+            <div class="royal-service-card">
+                <div class="service-icon">
+                    <i class="fas fa-wheelchair"></i>
                 </div>
+                <h3>Royal Accessibility</h3>
+                <p>Wheelchair accessible entrance, parking, restrooms & seating for all guests</p>
+            </div>
+            
+            <!-- Service Options -->
+            <div class="royal-service-card">
+                <div class="service-icon">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <h3>Dining Options</h3>
+                <p>Outdoor seating • No-contact delivery • Takeout • Dine-in • Table service</p>
+            </div>
+            
+            <!-- Royal Highlights -->
+            <div class="royal-service-card">
+                <div class="service-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <h3>Royal Highlights</h3>
+                <p>Fireplace • Great coffee & desserts • Live music • Rooftop seating • Private dining</p>
+            </div>
+            
+            <!-- Culinary Experience -->
+            <div class="royal-service-card">
+                <div class="service-icon">
+                    <i class="fas fa-cheese"></i>
+                </div>
+                <h3>Royal Cuisine</h3>
+                <p>Halal food • Vegan & Vegetarian options • All you can eat • Small plates • Quick bites</p>
+            </div>
+            
+            <!-- Dining Hours -->
+            <div class="royal-service-card">
+                <div class="service-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h3>Royal Dining Hours</h3>
+                <p>Brunch • Lunch • Dinner • Dessert • Late-night food • Happy hour</p>
+            </div>
+            
+            <!-- Atmosphere -->
+            <div class="royal-service-card">
+                <div class="service-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h3>Royal Atmosphere</h3>
+                <p>Casual • Cozy • Historic • Romantic • Upscale • Quiet • Trendy settings</p>
+            </div>
+            
+            <!-- Family Friendly -->
+            <div class="royal-service-card">
+                <div class="service-icon">
+                    <i class="fas fa-child"></i>
+                </div>
+                <h3>Family Royalty</h3>
+                <p>Kids' menu • High chairs • Good for birthdays • Family-friendly environment</p>
+            </div>
+            
+            <!-- Convenience -->
+            <div class="royal-service-card">
+                <div class="service-icon">
+                    <i class="fas fa-parking"></i>
+                </div>
+                <h3>Royal Convenience</h3>
+                <p>Free parking lot & street parking • All major credit/debit cards • NFC payments</p>
+            </div>
+            
+            <!-- Planning -->
+            <div class="royal-service-card">
+                <div class="service-icon">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+                <h3>Royal Planning</h3>
+                <p>Reservations accepted • Lunch & dinner reservations recommended • Group bookings</p>
             </div>
         </div>
-    </section>
-
+    </div>
+</section>
     <!-- Contact Section -->
     <section class="contact-section" id="contact">
         <div class="container">
@@ -2273,13 +2413,18 @@ nav {
             </div>
             
             <div class="royal-contact-grid">
-                <div class="royal-contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-map-marked-alt"></i>
-                    </div>
-                    <h3>Royal Location</h3>
-                    <p>140-A G.T Road, Singhpura<br>Lahore, Pakistan</p>
-                </div>
+                <div class="royal-contact-item" onclick="window.open('https://www.google.com/maps/place/Lahore+Shahi+Qila+Restaurant/@31.5787918,74.3696402,17z/data=!3m1!4b1!4m6!3m5!1s0x39191b1d4ef85991:0xed9e36c4b2ba9ea9!8m2!3d31.5787918!4d74.3696402!16s%2Fg%2F11sgrc0sbr?entry=ttu', '_blank')" style="cursor: pointer;">
+    <div class="contact-icon">
+        <i class="fas fa-map-marked-alt"></i>
+    </div>
+    <h3>Royal Location <i class="fas fa-external-link-alt" style="font-size: 1rem; margin-left: 8px; opacity: 0.8;"></i></h3>
+    <p style="position: relative; z-index: 2; pointer-events: none;">
+        140-A G.T Road, Singhpura<br>Lahore, Pakistan
+        <span style="display: block; font-size: 0.9rem; color: var(--royal-gold); margin-top: 5px; font-style: italic;">
+            Click for directions
+        </span>
+    </p>
+</div>
                 
                 <div class="royal-contact-item royal-special">
                     <div class="contact-icon">
