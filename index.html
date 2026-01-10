@@ -2630,7 +2630,622 @@ nav {
             header.addEventListener('mouseleave', function() {
                 this.style.transform = 'translateX(0)';
             });
+        });// ===============================================
+// ROYAL 3D CAROUSEL GALLERY - Add to end of script
+// ===============================================
+
+// Your restaurant photos - REPLACE THESE WITH YOUR ACTUAL PHOTO URLs
+const restaurantPhotos = [
+    {
+        url: 'https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyyTmCEAu0atk_ks12Ej9ipoNowKUQdI5i-GbqhzwDb8mlJEzegIbdXbROnc5ouXXBlgj0O2D1KCsPWDirSU9eLbkeYCVwGqRLvet_-raQq5yVKCgWyBskq928j2hde6DSw8Ke26w=w172-h224-p-k-no', // Restaurant interior
+        title: 'Chicken Chili Dry Sauteed String Beans',
+        desc: 'Royals Feast'
+    },
+    {
+        url: 'https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyvJE1A1X8dCDDC2OT6G4SbQleNsb4Hx967_7fCT41FrsNyNHAGbE9FYcm47J--F7d226oXAkns2l0ovY58TrnYxk8UOd8TA_gxS7vhukvsvrti_ZnhPw-u_kxZVmVf8hU5wYmLKQ=w172-h224-p-k-no', // Food presentation
+        title: 'Cakes',
+        desc: 'Beautifully plated'
+    },
+    {
+        url: 'https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyyJAYFILnYkHeKvgUOysEQJJpzYDcxQwAzcoPJkHqDK8iNdpOXBBaFB_L0j0XcOG2XtRZ4uWg8LNjox6uNmfiQjb_-LXM59d27DeRwEmlCVOMf8Z_1sTUjIw4PKUvUChok3-a4kA=w172-h224-p-k-no', // Restaurant setup
+        title: 'FineChicken Kababs',
+        desc: 'Royals Feast'
+    },
+    {
+        url: 'https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwTqp_KHxui5HhomJ3ES1s7EeGmVzPLSwxXxErNKTkgw8rlD4HhfA31nzB5tCY6bz-TQeKE-DF5EAkmWEe0qv2P8bklPSmB_wGbp4vogMMv2VAjdVxDtz-Wxdod4cA1wODy70UH=w172-h224-p-k-no', // Open kitchen
+        title: 'Chicken Mnchurian',
+        desc: 'Royals Feast'
+    },
+    {
+        url: 'https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzSagjl3v8ZcUQOiDX043izxTYd-Oxq9UmDr4-3vG54FavtiyPsuK59GafPshAF3NSm2qbtTL0Ma6d82IYOxuDcET4miRTPEsz2HHuoAsvRm6gjhNBVUlD5qjc1c5hikMenGnL0xA=w172-h224-p-k-no', // Tandoor
+        title: 'BBQ Plate',
+        desc: 'Royals Feast'
+    },
+    {
+        url: 'https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx6NT4Rt0NDhfWVE-8ccyK2Qc_RYQSbZ47wHSPf4n_G8GMO9sQYCPahwNAVZDnGdL0GqHoqpF7I9kJjMchR8tG9H1FfwZR8uaJlcyGZ0OvvewvonkQxmn9c3wk6SxXbDL5zRoKt3Q=w172-h224-p-k-no', // Bar area
+        title: 'Lhore Shahi Qila Speacial pizza',
+        desc: 'Royals Feast'
+    },
+    {
+        url: 'https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy3iqFR34DOiUldsXHqoLmpj-Z-TSJxNqw58B_OCb8Ff8Qv9E9MiX0d2smduvsaeQ5JvUHjIT07WKVGeKISX0_d7G4JC3K6dKhtViml58p31Plz49hzVGk_yh6SlBAbob89P48=w172-h224-p-k-no', // Cooking
+        title: 'Brownie with lce Cream',
+        desc: 'Royals Feast'
+    },
+    {
+        url: 'https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzC-8PGdtu1Ole5oZVas1tW7PYDIRUVWDXWSTsSrQl9ycMOylq7fjnTOZ7xOPtwebCJiwAcf-HuMrBMYRUNpRs9V_gBNOPLebXa3291JBTswZZMdZ8XT3e-2Zuyicswd-OSmJNm=w172-h224-p-k-no', // Desserts
+        title: 'Matka Mutton Curry',
+        desc: 'Royals Feast'
+    },
+    {
+        url: 'https://lh3.googleusercontent.com/gps-cs-s/AG0ilSykLx1Ayz0SMDGazal1g4jJehlt-wzBxQAj_rtX7kEgdf32d0AN3jx5BqEWLugkXc5ElYQRkW-_JYxqmQ98sPgTOZql1CO61OEPj4SvqgJjZxpngG5lnU2aV3o0nFxdqHNDO83t2Q=w172-h224-p-k-no', // Banquet
+        title: 'Kachumber Salad',
+        desc: 'Royals Feast'
+    },
+    {
+        url: 'https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxPapuv0JzAQTE6hn3t_PZlQkKwtSkXr7nGvmKvdNzVzinJeiyQcIf4CbQ0XOdJ-O15k5bBmhT3kd1F_S1F1y49wAXSzxDD6K-b0K4gVYv4aavUu3UNL29ozU7ZsJ3eG2JIcjCmTQ=w172-h224-p-k-no', // Outdoor
+        title: 'Shataki Chicken',
+        desc: 'Royals Feast'
+    },
+    {
+        url: 'https://lh3.googleusercontent.com/gps-cs-s/AG0ilSynJ8u0mf0UnxzwKk_9ji8v7QQejYtpwMDQfQ9svywH5G0eBmDVBcavkyEjQj9cyEeTFgVDrSO0lKoVTb4qZW8TagKk8vfuRHkAUYB84MwP2PCUszyqPxZighUuKJvvuiXfNg1Olg=w172-h224-p-k-no', // Outdoor
+        title: 'Rasiaan Salad',
+        desc: 'Royals Feast'
+    },
+    {
+        url: 'https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwuFpNDNmCidxSnT1UDAXWqE9ihB2ht4ulvLSjHGpxDBaO_imG_QBhxbvlS9ZmN1zKP3mMSNaTHKaW58U6s5I3XNUtFCMnOYfH4IZuxOpWUlbO0BSgQUHbHp8qz-WgFSVKpIGM=w172-h224-p-k-no', // Outdoor
+        title: 'Rashmi Malai Chicken Tikka',
+        desc: 'Royals Feast'
+    },
+    {
+        url: 'https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwvOFXaUTYjIkY6iqJxbfAExQEM7H-WMXMPVq6igTO0yZL1qFuaDgU5ZL4APWBAjPd49HQaLFLvR_ZLf_tqLEGqB-DkDVNJExtjv1IDlQ5Rgj3FaSUfyYcoH_p6ENiuIr1QDHvs=w172-h224-p-k-no', // Outdoor
+        title: 'Pakistani Omelette',
+        desc: 'Royals Feast'
+    },
+    {
+        url: 'https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxZI0xMiQHa7_9wvCOre9bHlr-BTJ44TSelYMsDsW90x6w7sks6NaumMIQ1GqHZeIYCRmWnD91eTD3FM0ILgQBOJxsdcygFdKIP4mz2ZQRNX32FgM5HOtn8e-lCvpFSymsHzvw=w172-h224-p-k-no', // Outdoor
+        title: 'Kalonji Nan',
+        desc: 'Royals Feast'
+    },
+    {
+        url: 'https://lh3.googleusercontent.com/p/AF1QipNSxvFy2_zlSjgR31bvvc6ziXP8wye8gIg_RmTF=w172-h224-p-k-no', // Outdoor
+        title: 'Sandwichs',
+        desc: 'Royals Feast'
+    },
+    {
+        url: 'https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwhBKBeAsjtvun6bFCsFUAhFwYPQ1IFsTJFDGUEyTuOPcFjc9gvi7Xo_QoYXIdIdEYzZ6TiCXd2pd2pTwEh8RJ7jVPpwz3JS7ebDAXbgc6D-cfU-YQ4iJSBD7MB-gCHDLBmvak7zQ=w172-h224-p-k-no', // Outdoor
+        title: 'Rice',
+        desc: 'Royals Feast'
+    }
+];
+
+// Create Gallery HTML
+const galleryHTML = `
+<section class="royal-3d-showcase" id="gallery">
+    <div class="container">
+        <div class="section-title">
+            <h2>ROYAL SHOWCASE</h2>
+            <p class="script-font" style="font-size: 2rem; margin-top: 20px;">Experience Our Majesty</p>
+        </div>
+        
+        <div class="showcase-3d">
+            <div class="showcase-track">
+                <!-- Left (Previous) Image -->
+                <div class="showcase-card side-card left-card" id="leftCard">
+                    <div class="card-image"></div>
+                    <div class="card-overlay">
+                        <span class="nav-hint">Previous</span>
+                    </div>
+                </div>
+                
+                <!-- Center (Current) Image -->
+                <div class="showcase-card center-card" id="centerCard">
+                    <div class="card-image"></div>
+                    <div class="card-info">
+                        <h3 id="centerTitle">Royal Dining</h3>
+                        <p id="centerDesc">Experience the ambiance</p>
+                        <div class="image-counter">
+                            <span id="currentNum">1</span> / <span id="totalNum">10</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right (Next) Image -->
+                <div class="showcase-card side-card right-card" id="rightCard">
+                    <div class="card-image"></div>
+                    <div class="card-overlay">
+                        <span class="nav-hint">Next</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Navigation Controls -->
+            <div class="showcase-controls">
+                <button class="control-btn prev-btn" id="prevBtn">
+                    <i class="fas fa-chevron-left"></i> Prev
+                </button>
+                <div class="dots-container" id="dotsContainer"></div>
+                <button class="control-btn next-btn" id="nextBtn">
+                    Next <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+`;
+
+// Add gallery before contact section
+const contactSection = document.querySelector('.contact-section');
+contactSection.insertAdjacentHTML('beforebegin', galleryHTML);
+
+// Add Gallery CSS
+const galleryCSS = `
+.royal-3d-showcase {
+    background: linear-gradient(to bottom, rgba(10,8,6,0.98), rgba(26,22,18,0.99));
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.royal-3d-showcase:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--royal-gold), transparent);
+}
+
+.showcase-3d {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    perspective: 1500px;
+}
+
+.showcase-track {
+    position: relative;
+    height: 450px;
+    margin-bottom: 50px;
+    transform-style: preserve-3d;
+}
+
+.showcase-card {
+    position: absolute;
+    width: 320px;
+    height: 450px;
+    top: 50%;
+    transform-origin: center;
+    transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border-radius: 15px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+/* Image enhancement filters */
+.showcase-card .card-image {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    filter: contrast(1.15) saturate(1.1) brightness(1.05);
+    transition: all 0.5s ease;
+}
+
+.showcase-card:hover .card-image {
+    filter: contrast(1.3) saturate(1.2) brightness(1.1);
+    transform: scale(1.03);
+}
+
+/* Left Card (Previous) */
+.side-card.left-card {
+    left: 15%;
+    transform: translate(-50%, -50%) rotateY(25deg) scale(0.85);
+    opacity: 0.7;
+    z-index: 1;
+}
+
+.side-card.left-card:hover {
+    transform: translate(-50%, -50%) rotateY(20deg) scale(0.9);
+    opacity: 0.9;
+}
+
+/* Center Card (Current) */
+.center-card {
+    left: 50%;
+    transform: translate(-50%, -50%) rotateY(0deg) scale(1);
+    opacity: 1;
+    z-index: 3;
+    border: 3px solid var(--royal-gold);
+    box-shadow: 
+        0 30px 60px rgba(0,0,0,0.8),
+        0 0 50px rgba(245,197,66,0.4);
+}
+
+.center-card:hover {
+    transform: translate(-50%, -50%) rotateY(0deg) scale(1.05);
+    border-color: var(--light-gold);
+    box-shadow: 
+        0 40px 80px rgba(0,0,0,0.9),
+        0 0 70px rgba(245,197,66,0.6);
+}
+
+/* Right Card (Next) */
+.side-card.right-card {
+    left: 85%;
+    transform: translate(-50%, -50%) rotateY(-25deg) scale(0.85);
+    opacity: 0.7;
+    z-index: 1;
+}
+
+.side-card.right-card:hover {
+    transform: translate(-50%, -50%) rotateY(-20deg) scale(0.9);
+    opacity: 0.9;
+}
+
+/* Card Overlay */
+.card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    padding: 20px;
+    color: var(--light-gold);
+    transform: translateY(100%);
+    transition: transform 0.4s ease;
+}
+
+.showcase-card:hover .card-overlay {
+    transform: translateY(0);
+}
+
+.nav-hint {
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    color: var(--royal-gold);
+    display: block;
+    text-align: center;
+}
+
+/* Center Card Info */
+.card-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    padding: 25px;
+    color: white;
+    transform: translateY(0);
+    transition: transform 0.4s ease;
+}
+
+.center-card:hover .card-info {
+    transform: translateY(-10px);
+}
+
+.card-info h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.8rem;
+    color: var(--royal-gold);
+    margin-bottom: 8px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+.card-info p {
+    font-size: 1.1rem;
+    color: var(--light-gold);
+    margin-bottom: 15px;
+    opacity: 0.9;
+}
+
+.image-counter {
+    display: inline-block;
+    background: rgba(0,0,0,0.6);
+    color: var(--royal-gold);
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    border: 1px solid rgba(245,197,66,0.4);
+}
+
+/* Controls */
+.showcase-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+
+.control-btn {
+    background: linear-gradient(135deg, 
+        rgba(245,197,66,0.2), 
+        rgba(100,27,46,0.2));
+    color: var(--royal-gold);
+    border: 2px solid var(--royal-gold);
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 120px;
+    justify-content: center;
+}
+
+.control-btn:hover {
+    background: linear-gradient(135deg, 
+        var(--royal-gold), 
+        var(--deep-gold));
+    color: var(--burgundy);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(245,197,66,0.4);
+}
+
+.control-btn:active {
+    transform: translateY(0);
+}
+
+.dots-container {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(245,197,66,0.3);
+    border: 2px solid var(--royal-gold);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot:hover {
+    transform: scale(1.3);
+    background: rgba(245,197,66,0.6);
+}
+
+.dot.active {
+    background: var(--royal-gold);
+    transform: scale(1.4);
+    box-shadow: 0 0 15px rgba(245,197,66,0.8);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .showcase-track {
+        height: 400px;
+    }
+    
+    .showcase-card {
+        width: 280px;
+        height: 400px;
+    }
+    
+    .side-card.left-card {
+        left: 20%;
+    }
+    
+    .side-card.right-card {
+        left: 80%;
+    }
+}
+
+@media (max-width: 768px) {
+    .showcase-track {
+        height: 350px;
+    }
+    
+    .showcase-card {
+        width: 240px;
+        height: 350px;
+    }
+    
+    .side-card.left-card {
+        left: 25%;
+        transform: translate(-50%, -50%) rotateY(30deg) scale(0.75);
+    }
+    
+    .side-card.right-card {
+        left: 75%;
+        transform: translate(-50%, -50%) rotateY(-30deg) scale(0.75);
+    }
+    
+    .card-info h3 {
+        font-size: 1.5rem;
+    }
+    
+    .card-info p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .showcase-track {
+        height: 300px;
+    }
+    
+    .showcase-card {
+        width: 200px;
+        height: 300px;
+    }
+    
+    .side-card.left-card {
+        left: 30%;
+        transform: translate(-50%, -50%) rotateY(35deg) scale(0.65);
+        opacity: 0.5;
+    }
+    
+    .side-card.right-card {
+        left: 70%;
+        transform: translate(-50%, -50%) rotateY(-35deg) scale(0.65);
+        opacity: 0.5;
+    }
+    
+    .showcase-controls {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .control-btn {
+        min-width: 150px;
+    }
+    
+    .dots-container {
+        order: -1;
+    }
+}
+`;
+
+// Add CSS to page
+const style = document.createElement('style');
+style.textContent = galleryCSS;
+document.head.appendChild(style);
+
+// Initialize Gallery
+let currentIndex = 0;
+
+function initGallery() {
+    const leftCard = document.getElementById('leftCard');
+    const centerCard = document.getElementById('centerCard');
+    const rightCard = document.getElementById('rightCard');
+    const centerTitle = document.getElementById('centerTitle');
+    const centerDesc = document.getElementById('centerDesc');
+    const currentNum = document.getElementById('currentNum');
+    const totalNum = document.getElementById('totalNum');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const dotsContainer = document.getElementById('dotsContainer');
+    
+    const totalImages = restaurantPhotos.length;
+    totalNum.textContent = totalImages;
+    
+    // Create dots
+    for (let i = 0; i < totalImages; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'dot';
+        dot.dataset.index = i;
+        if (i === currentIndex) dot.classList.add('active');
+        
+        dot.addEventListener('click', () => {
+            currentIndex = i;
+            updateGallery();
         });
+        
+        dotsContainer.appendChild(dot);
+    }
+    
+    // Update gallery
+    function updateGallery() {
+        const prevIndex = (currentIndex - 1 + totalImages) % totalImages;
+        const nextIndex = (currentIndex + 1) % totalImages;
+        
+        // Update images
+        leftCard.querySelector('.card-image').style.backgroundImage = `url('${restaurantPhotos[prevIndex].url}')`;
+        centerCard.querySelector('.card-image').style.backgroundImage = `url('${restaurantPhotos[currentIndex].url}')`;
+        rightCard.querySelector('.card-image').style.backgroundImage = `url('${restaurantPhotos[nextIndex].url}')`;
+        
+        // Update info
+        centerTitle.textContent = restaurantPhotos[currentIndex].title;
+        centerDesc.textContent = restaurantPhotos[currentIndex].desc;
+        currentNum.textContent = currentIndex + 1;
+        
+        // Update dots
+        document.querySelectorAll('.dot').forEach((dot, i) => {
+            dot.classList.toggle('active', i === currentIndex);
+        });
+    }
+    
+    // Navigation functions
+    function nextImage() {
+        currentIndex = (currentIndex + 1) % totalImages;
+        updateGallery();
+    }
+    
+    function prevImage() {
+        currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+        updateGallery();
+    }
+    
+    // Event listeners for buttons
+    prevBtn.addEventListener('click', prevImage);
+    nextBtn.addEventListener('click', nextImage);
+    
+    // Event listeners for side cards
+    leftCard.addEventListener('click', prevImage);
+    rightCard.addEventListener('click', nextImage);
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') prevImage();
+        if (e.key === 'ArrowRight') nextImage();
+    });
+    
+    // Auto slide (optional)
+    let autoSlide = setInterval(nextImage, 4000);
+    
+    // Pause on hover
+    const gallery = document.querySelector('.royal-3d-showcase');
+    gallery.addEventListener('mouseenter', () => clearInterval(autoSlide));
+    gallery.addEventListener('mouseleave', () => {
+        autoSlide = setInterval(nextImage, 4000);
+    });
+    
+    // Initialize
+    updateGallery();
+}
+
+// Add to navigation
+function addGalleryToNav() {
+    const navLinks = document.getElementById('navLinks');
+    const galleryNavItem = document.createElement('li');
+    galleryNavItem.innerHTML = '<a href="#gallery">Royal Gallery</a>';
+    
+    // Insert after Royal Feast link
+    const menuLink = document.querySelector('a[href="#menu"]').parentElement;
+    navLinks.insertBefore(galleryNavItem, menuLink.nextElementSibling);
+}
+
+// Initialize when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    // Add navigation link
+    addGalleryToNav();
+    
+    // Initialize gallery
+    setTimeout(initGallery, 1000);
+});
+
+// INSTRUCTIONS TO ADD YOUR REAL PHOTOS:
+// =====================================
+// 
+// 1. Take photos of your restaurant with your phone/camera
+// 2. Upload them to a free service:
+//    - ImgBB.com (Recommended - free, no account needed)
+//    - Google Drive (make folder public)
+//    - Dropbox (public folder)
+// 
+// 3. Get direct image URLs (should end with .jpg, .png, etc.)
+// 
+// 4. Replace the current image URLs in the 'restaurantPhotos' array:
+//    Example:
+//    {
+//        url: 'https://i.ibb.co/your-image-code/photo1.jpg', // YOUR ACTUAL PHOTO URL
+//        title: 'Shahi Qila Dining',
+//        desc: 'Our main dining area'
+//    }
+// 
+// 5. Update titles and descriptions
     </script>
     <!-- 
     Fonts: Google Fonts - SIL Open Font License (Free for Commercial Use)
