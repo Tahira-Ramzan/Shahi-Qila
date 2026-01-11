@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -524,11 +524,79 @@ nav {
             content: '✦';
         }
 
-        /* Royal Category Cards */
+        /* Menu Navigation Container */
+        .menu-nav-container {
+            display: flex;
+            gap: 12px;
+            margin: 50px 0;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .menu-nav-btn {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, rgba(245, 197, 66, 0.15), rgba(212, 160, 23, 0.15));
+            border: 2px solid rgba(245, 197, 66, 0.4);
+            color: var(--light-gold);
+            cursor: pointer;
+            border-radius: 25px;
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            letter-spacing: 0.8px;
+            transition: var(--transition);
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+            position: relative;
+            z-index: 100;
+        }
+
+        .menu-nav-btn i {
+            font-size: 1rem;
+        }
+
+        .menu-nav-btn:hover {
+            background: linear-gradient(135deg, rgba(245, 197, 66, 0.35), rgba(212, 160, 23, 0.3));
+            border-color: var(--royal-gold);
+            box-shadow: 0 0 20px rgba(245, 197, 66, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .menu-nav-btn.active {
+            background: linear-gradient(135deg, var(--royal-gold), var(--deep-gold));
+            border-color: var(--royal-gold);
+            color: var(--night-black);
+            box-shadow: 0 0 25px rgba(245, 197, 66, 0.6);
+            font-weight: 800;
+        }
+
+        /* Menu Category Visibility */
         .royal-category {
+            display: none !important;
             margin-bottom: 100px;
             position: relative;
         }
+
+        .royal-category.active {
+            display: block !important;
+            animation: categoryFade 0.5s ease-in;
+        }
+
+        @keyframes categoryFade {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
 /* Category Header Image Effect */
 .category-header {
     display: flex;
@@ -1350,6 +1418,21 @@ nav {
                 padding: 80px 0;
             }
             
+            .menu-nav-container {
+                gap: 8px;
+                margin: 40px 0;
+            }
+            
+            .menu-nav-btn {
+                padding: 10px 14px;
+                font-size: 0.75rem;
+                gap: 6px;
+            }
+            
+            .menu-nav-btn i {
+                font-size: 0.9rem;
+            }
+            
             .royal-menu-grid {
                 grid-template-columns: 1fr;
                 gap: 15px;
@@ -1986,8 +2069,45 @@ nav {
             <p class="script-font" style="font-size: 2rem; margin-top: 20px;">A Culinary Journey Through Royal Recipes</p>
         </div>
         
+        <!-- Category Navigation Menu -->
+        <div class="menu-nav-container">
+            <button class="menu-nav-btn active" data-category="starters">
+                <i class="fas fa-crown"></i> Starters
+            </button>
+            <button class="menu-nav-btn" data-category="handi">
+                <i class="fas fa-mortar-pestle"></i> Handi & Karahi
+            </button>
+            <button class="menu-nav-btn" data-category="bbq">
+                <i class="fas fa-utensil-spoon"></i> B.B.Q Platters
+            </button>
+            <button class="menu-nav-btn" data-category="chinese">
+                <i class="fas fa-utensils"></i> Chinese
+            </button>
+            <button class="menu-nav-btn" data-category="tandoor">
+                <i class="fas fa-fire"></i> Tandoor
+            </button>
+            <button class="menu-nav-btn" data-category="burgers">
+                <i class="fas fa-hamburger"></i> Burgers
+            </button>
+            <button class="menu-nav-btn" data-category="wraps">
+                <i class="fas fa-burrito"></i> Wraps
+            </button>
+            <button class="menu-nav-btn" data-category="pizza">
+                <i class="fas fa-pizza-slice"></i> Pizza
+            </button>
+            <button class="menu-nav-btn" data-category="sandwich">
+                <i class="fas fa-sandwich"></i> Sandwich & Pasta
+            </button>
+            <button class="menu-nav-btn" data-category="desserts">
+                <i class="fas fa-cake-candles"></i> Desserts
+            </button>
+            <button class="menu-nav-btn" data-category="beverages">
+                <i class="fas fa-glass-cheers"></i> Beverages
+            </button>
+        </div>
+        
         <!-- STARTERS - Royal Appetizers -->
-        <div class="royal-category">
+        <div class="royal-category" data-category="starters">
             <div class="category-header">
                 <div class="category-icon">
                     <i class="fas fa-crown"></i>
@@ -2099,7 +2219,7 @@ nav {
         </div>
         
         <!-- TRADITIONAL HANDI & KARAHI -->
-        <div class="royal-category">
+        <div class="royal-category" data-category="handi">
             <div class="category-header">
                 <div class="category-icon">
                     <i class="fas fa-mortar-pestle"></i>
@@ -2180,7 +2300,7 @@ nav {
         </div>
         
         <!-- B.B.Q PLATTERS -->
-        <div class="royal-category">
+        <div class="royal-category" data-category="bbq">
             <div class="category-header">
                 <div class="category-icon">
                     <i class="fas fa-utensil-spoon"></i>
@@ -2214,7 +2334,7 @@ nav {
         </div>
         
         <!-- CHINESE -->
-        <div class="royal-category">
+        <div class="royal-category" data-category="chinese">
             <div class="category-header">
                 <div class="category-icon">
                     <i class="fas fa-utensils"></i>
@@ -2273,7 +2393,7 @@ nav {
         </div>
         
         <!-- TANDOOR -->
-        <div class="royal-category">
+        <div class="royal-category" data-category="tandoor">
             <div class="category-header">
                 <div class="category-icon">
                     <i class="fas fa-fire"></i>
@@ -2340,7 +2460,7 @@ nav {
         </div>
         
         <!-- BURGERS -->
-        <div class="royal-category">
+        <div class="royal-category" data-category="burgers">
             <div class="category-header">
                 <div class="category-icon">
                     <i class="fas fa-hamburger"></i>
@@ -2393,7 +2513,7 @@ nav {
         </div>
         
         <!-- WRAPS -->
-        <div class="royal-category">
+        <div class="royal-category" data-category="wraps">
             <div class="category-header">
                 <div class="category-icon">
                     <i class="fas fa-burrito"></i>
@@ -2423,7 +2543,7 @@ nav {
         </div>
         
         <!-- PIZZA -->
-        <div class="royal-category">
+        <div class="royal-category" data-category="pizza">
             <div class="category-header">
                 <div class="category-icon">
                     <i class="fas fa-pizza-slice"></i>
@@ -2476,7 +2596,7 @@ nav {
         </div>
         
         <!-- SANDWICH & PASTA -->
-        <div class="royal-category">
+        <div class="royal-category" data-category="sandwich">
             <div class="category-header">
                 <div class="category-icon">
                     <i class="fas fa-bread-slice"></i>
@@ -2543,7 +2663,7 @@ nav {
         </div>
         
         <!-- DESSERTS -->
-        <div class="royal-category">
+        <div class="royal-category" data-category="desserts">
             <div class="category-header">
                 <div class="category-icon">
                     <i class="fas fa-ice-cream"></i>
@@ -2632,7 +2752,7 @@ nav {
         </div>
         
         <!-- BEVERAGES -->
-        <div class="royal-category">
+        <div class="royal-category" data-category="beverages">
             <div class="category-header">
                 <div class="category-icon">
                     <i class="fas fa-glass-cheers"></i>
@@ -3181,7 +3301,6 @@ const galleryHTML = `
                     <div class="card-image"></div>
                     <div class="card-info">
                         <h3 id="centerTitle">Royal Dining</h3>
-                        <p id="centerDesc">Experience the ambiance</p>
                         <div class="image-counter">
                             <span id="currentNum">1</span> / <span id="totalNum">10</span>
                         </div>
@@ -3853,6 +3972,107 @@ document.addEventListener('DOMContentLoaded', function() {
 //    }
 // 
 // 5. Update titles and descriptions
+
+// ============================================
+// MENU NAVIGATION CONTROL
+// ============================================
+
+function activateMenuCategory(categoryId) {
+    console.log('=== Activating category:', categoryId);
+    
+    const menuNavBtns = document.querySelectorAll('.menu-nav-btn');
+    const allCategories = document.querySelectorAll('.royal-category');
+    
+    console.log('Total menu buttons found:', menuNavBtns.length);
+    console.log('Total categories found:', allCategories.length);
+    
+    // Remove active class from all buttons
+    menuNavBtns.forEach(btn => {
+        btn.classList.remove('active');
+    });
+    
+    // Hide all categories
+    allCategories.forEach(cat => {
+        cat.classList.remove('active');
+        cat.style.display = 'none';
+    });
+    
+    // Activate the selected button
+    const activeBtn = document.querySelector(`.menu-nav-btn[data-category="${categoryId}"]`);
+    if (activeBtn) {
+        activeBtn.classList.add('active');
+        console.log('✓ Button activated:', categoryId);
+    } else {
+        console.error('✗ Button not found for:', categoryId);
+    }
+    
+    // Show and activate the selected category
+    const activeCategory = document.querySelector(`.royal-category[data-category="${categoryId}"]`);
+    if (activeCategory) {
+        activeCategory.classList.add('active');
+        activeCategory.style.display = 'block';
+        console.log('✓ Category shown:', categoryId);
+    } else {
+        console.error('✗ Category not found for:', categoryId);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('=== DOM Content Loaded ===');
+    
+    const menuNavBtns = document.querySelectorAll('.menu-nav-btn');
+    console.log('Menu buttons available:', menuNavBtns.length);
+    
+    // Display all button attributes for debugging
+    menuNavBtns.forEach((btn, i) => {
+        const category = btn.getAttribute('data-category');
+        console.log(`Button ${i}:`, category);
+    });
+    
+    // Set first category as active on page load
+    if (menuNavBtns.length > 0) {
+        const firstCategory = menuNavBtns[0].getAttribute('data-category');
+        console.log('Activating first category:', firstCategory);
+        activateMenuCategory(firstCategory);
+    }
+    
+    // Add click listeners to all menu nav buttons
+    menuNavBtns.forEach((btn, index) => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const categoryId = this.getAttribute('data-category');
+            console.log('=== CLICK EVENT ===');
+            console.log('Button clicked - category:', categoryId);
+            activateMenuCategory(categoryId);
+        });
+    });
+    
+    console.log('=== Menu Navigation Initialized ===');
+});
+
+// ============================================
+// FIX ANCHOR LINKS FOR FIXED HEADER
+// ============================================
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href === '#') return;
+            
+            const target = document.querySelector(href);
+            if (target) {
+                e.preventDefault();
+                const headerHeight = document.querySelector('header').offsetHeight;
+                const targetPosition = target.offsetTop - headerHeight - 20;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+});
     </script>
     <!-- 
     Fonts: Google Fonts - SIL Open Font License (Free for Commercial Use)
@@ -3860,4 +4080,4 @@ document.addEventListener('DOMContentLoaded', function() {
     Images: Pexels - Free for Commercial Use, No Attribution Required
 -->
 </body>
-</html>
+            </html>
