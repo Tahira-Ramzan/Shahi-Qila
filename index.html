@@ -1,33 +1,4538 @@
-/* New Professional Design System CSS Variables */
-:root {
-    /* Typography */
-    --font-family-base: 'Helvetica Neue', sans-serif;
-    --font-size-base: 16px;
-    --font-weight-normal: 400;
-    --font-weight-bold: 700;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shahi Qila | Royal Dining Experience | Lahore's Finest Cuisine</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@400;600;700;800&family=Marcellus&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --royal-gold: #F5C542;
+            --deep-gold: #D4A017;
+            --light-gold: #FFE8A3;
+            --burgundy: #641B2E;
+            --deep-burgundy: #4A0F20;
+            --royal-red: #8A2D3B;
+            --night-black: #0A0806;
+            --charcoal: #1A1612;
+            --antique-white: #FAF3E0;
+            --cream: #F8F1E1;
+            --velvet: #2C1810;
+            --transition: all 0.4s cubic-bezier(0.215, 0.610, 0.355, 1);
+            --glow: 0 0 20px rgba(245, 197, 66, 0.3);
+            --royal-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
 
-    /* Spacing Scale */
-    --spacing-xs: 4px;
-    --spacing-sm: 8px;
-    --spacing-md: 16px;
-    --spacing-lg: 32px;
-    --spacing-xl: 64px;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    /* Border Radius */
-    --border-radius-sm: 4px;
-    --border-radius-md: 8px;
-    --border-radius-lg: 16px;
+        body {
+            font-family: 'Marcellus', serif;
+            line-height: 1.8;
+            color: var(--antique-white);
+            background-color: var(--night-black);
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(245, 197, 66, 0.05) 0%, transparent 25%),
+                radial-gradient(circle at 80% 70%, rgba(100, 27, 46, 0.05) 0%, transparent 25%),
+                linear-gradient(to bottom, rgba(10, 8, 6, 0.97) 0%, rgba(26, 22, 18, 0.99) 100%);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
 
-    /* Shadows */
-    --box-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.1);
-    --box-shadow-md: 0 2px 4px rgba(0, 0, 0, 0.1);
+        h1, h2, h3, h4, .logo, .royal-title {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            color: var(--royal-gold);
+            letter-spacing: 1.5px;
+        }
 
-    /* Layout Variables */
-    --layout-gutter: var(--spacing-md);
-    --container-max-width: 1200px;
+        .script-font {
+            font-family: 'Great Vibes', cursive;
+            color: var(--light-gold);
+        }
 
-    /* Existing Brand Colors */
-    --color-royal-gold: #d8b800;
-    --color-burgundy: #840d0d;
-    /* Add other brand colors if necessary */
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* Header - Royal Navbar */
+        header {
+            background: linear-gradient(180deg, rgba(26, 22, 18, 0.95) 0%, rgba(10, 8, 6, 0.8) 100%);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(245, 197, 66, 0.2);
+            padding: 15px 0;
+            box-shadow: var(--royal-shadow);
+        }
+
+/* container remains unchanged */
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* logo container styling remains unchanged */
+.logo-img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid var(--royal-gold);
+    box-shadow: var(--glow);
+    position: relative;
+    transition: var(--transition);
+    background: linear-gradient(135deg, var(--royal-gold), var(--deep-gold));
+    flex-shrink: 0;
+}
+
+/* ONLY THIS BLOCK FIXES THE IMAGE FITTING */
+.logo-img img {
+    width: 100%;          /* fill container width */
+    height: 100%;         /* fill container height */
+    object-fit: contain;  /* show the whole image without zoom/cropping */
+    display: block;       /* remove extra inline spacing */
+}
+
+/* shimmer effect remains unchanged */
+.logo-img:before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: rotate(45deg);
+    transition: var(--transition);
+}
+
+/* hover effects remain unchanged */
+.logo-img:hover {
+    transform: scale(1.05) rotate(5deg);
+    box-shadow: 0 0 30px rgba(245, 197, 66, 0.5);
+}
+
+.logo-img:hover:before {
+    left: 150%;
+}
+
+
+ .logo-real {
+    display: inline-block;    /* keeps container only as big as image */
+    border-radius: 50%;       /* optional: makes circle if you want */
+    overflow: hidden;         /* optional: hides anything outside circle */
+    border: 3px solid var(--royal-gold); /* optional border */
+    box-shadow: var(--glow);  /* optional glow */
+}
+
+.logo-real img {
+    display: block;           /* removes bottom spacing */
+    width: auto;              /* original width */
+    height: auto;             /* original height */
+    max-width: 100%;          /* responsive: doesn’t overflow container */
+}
+
+
+
+        .logo-text {
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            color: var(--royal-gold);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            letter-spacing: 2px;
+        }
+
+        .logo-subtext {
+            font-family: 'Great Vibes', cursive;
+            font-size: 1rem;
+            color: var(--light-gold);
+            margin-top: 3px;
+            opacity: 0.9;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--light-gold);
+            font-size: 1rem;
+            font-weight: 500;
+            position: relative;
+            padding: 8px 0;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        .nav-links a:before {
+            content: '✦';
+            position: absolute;
+            left: -25px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--royal-gold);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--royal-gold);
+            text-shadow: 0 0 10px rgba(245, 197, 66, 0.5);
+        }
+
+        .nav-links a:hover:before {
+            opacity: 1;
+            left: -20px;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(90deg, var(--royal-gold), transparent);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+ .royal-phone {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(135deg, rgba(245, 197, 66, 0.1), rgba(100, 27, 46, 0.1));
+    padding: 10px 18px;
+    border-radius: 50px;
+    border: 1px solid rgba(245, 197, 66, 0.3);
+    transition: var(--transition);
+    position: relative;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.royal-phone:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% - 4px);
+    height: calc(100% - 4px);
+    background: linear-gradient(45deg, var(--royal-gold), var(--burgundy), var(--royal-gold));
+    z-index: -1;
+    border-radius: 50px;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.royal-phone:hover:before {
+    opacity: 0.3;
+    animation: royalGlow 2s linear infinite;
+}
+
+@keyframes royalGlow {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+}
+
+.royal-phone i {
+    font-size: 1.5rem;
+    color: var(--royal-gold);
+    position: relative;
+    z-index: 2;
+    transition: var(--transition);
+}
+
+.royal-phone span {
+    color: var(--light-gold);
+    font-size: 1.1rem;
+    font-weight: 600;
+    position: relative;
+    z-index: 2;
+    transition: var(--transition);
+}
+
+.royal-phone:hover i {
+    transform: scale(1.1);
+    color: var(--light-gold);
+}
+
+.royal-phone:hover span {
+    color: var(--royal-gold);
+    text-shadow: 0 0 10px rgba(245, 197, 66, 0.5);
+}
+
+        @keyframes royalGlow {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+
+        .royal-phone i {
+            font-size: 1.5rem;
+            color: var(--royal-gold);
+        }
+
+        .royal-phone span {
+            color: var(--light-gold);
+            font-size: 1.1rem;
+            font-weight: 600;
+        }.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+    padding: 0 30px;
+    flex-wrap: wrap;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-shrink: 0;
+}
+
+nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--royal-gold);
+            font-size: 2rem;
+            cursor: pointer;
+        }
+        /* Hero Section - Royal Palace Entrance */
+       .hero {
+    height: 100vh;
+    background: 
+        /* Pakistani food image - positioned top right, 30% width, fades left */
+        linear-gradient(to left, transparent 0%, rgba(10, 8, 6, 0.8) 30%, rgba(10, 8, 6, 0.9) 70%, rgba(10, 8, 6, 0.95) 100%),
+        url('https://media.istockphoto.com/id/995903748/photo/smoked-and-spicy-tandoori-chicken-grilling-with-smoke.jpg?s=612x612&w=0&k=20&c=xq_apF2Osk5HYFOgBS9crRi1puLozxyGWFuCUV0mhYg=') top right / 30% auto no-repeat,
+        /* Keep your existing gradients */
+        radial-gradient(ellipse at 20% 20%, rgba(245, 197, 66, 0.15) 0%, transparent 40%),
+        radial-gradient(ellipse at 80% 80%, rgba(100, 27, 46, 0.15) 0%, transparent 40%),
+        linear-gradient(to bottom, rgba(10, 8, 6, 0.9), rgba(10, 8, 6, 0.95));
+    background-size: cover, auto, cover, cover, cover;
+    background-position: center, top right, center, center, center;
+    background-attachment: fixed, fixed, fixed, fixed, fixed;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    margin-top: 120px;
+}
+
+.hero:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(245, 197, 66, 0.05) 50%, transparent 70%);
+    animation: rayAnimation 8s linear infinite;
+}
+
+@keyframes rayAnimation {
+    0% { transform: translateX(-100%) translateY(-100%); }
+    100% { transform: translateX(100%) translateY(100%); }
+}
+
+.hero-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 30px;
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1 {
+    font-size: 5rem;
+    margin-bottom: 30px;
+    text-shadow: 
+        0 0 20px rgba(245, 197, 66, 0.5),
+        0 0 40px rgba(245, 197, 66, 0.3),
+        2px 2px 4px rgba(0, 0, 0, 0.8);
+    line-height: 1.2;
+    letter-spacing: 3px;
+    animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+    from { text-shadow: 0 0 20px rgba(245, 197, 66, 0.5), 0 0 40px rgba(245, 197, 66, 0.3); }
+    to { text-shadow: 0 0 30px rgba(245, 197, 66, 0.7), 0 0 60px rgba(245, 197, 66, 0.5), 0 0 80px rgba(245, 197, 66, 0.3); }
+}
+
+        .hero .script-font {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            display: block;
+            opacity: 0.9;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            color: var(--light-gold);
+            margin-bottom: 50px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+        }
+
+        .royal-cta {
+            background: linear-gradient(135deg, var(--royal-gold), var(--deep-gold));
+            color: var(--burgundy);
+            border: none;
+            padding: 22px 60px;
+            font-size: 1.3rem;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            border-radius: 0;
+            cursor: pointer;
+            transition: var(--transition);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 
+                0 0 20px rgba(245, 197, 66, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        .royal-cta:before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--royal-gold), var(--light-gold), var(--royal-gold));
+            z-index: -1;
+            filter: blur(10px);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .royal-cta:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 
+                0 0 30px rgba(245, 197, 66, 0.7),
+                0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .royal-cta:hover:before {
+            opacity: 1;
+        }
+
+        /* Menu Sections - Royal Feast */
+        .section {
+            padding: 120px 0;
+            position: relative;
+        }
+
+        .section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--royal-gold), transparent);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 80px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 4rem;
+            display: inline-block;
+            padding: 0 50px 20px;
+            position: relative;
+            letter-spacing: 2px;
+            background: linear-gradient(45deg, var(--royal-gold), var(--light-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        @media (max-width: 768px) {
+            .section-title h2 {
+                font-size: 2.5rem;
+            }
+        }
+
+        .section-title h2:before,
+        .section-title h2:after {
+            content: '✦';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--royal-gold);
+            font-size: 2rem;
+        }
+
+        .section-title h2:before {
+            left: 0;
+        }
+
+        .section-title h2:after {
+            right: 0;
+        }
+
+        .section-title h2:after {
+            content: '✦';
+        }
+
+        /* Menu Navigation Container */
+        .menu-nav-container {
+            display: flex;
+            gap: 12px;
+            margin: 50px 0;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .menu-nav-btn {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, rgba(245, 197, 66, 0.15), rgba(212, 160, 23, 0.15));
+            border: 2px solid rgba(245, 197, 66, 0.4);
+            color: var(--light-gold);
+            cursor: pointer;
+            border-radius: 25px;
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            letter-spacing: 0.8px;
+            transition: var(--transition);
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+            position: relative;
+            z-index: 100;
+        }
+
+        .menu-nav-btn i {
+            font-size: 1rem;
+        }
+
+        .menu-nav-btn:hover {
+            background: linear-gradient(135deg, rgba(245, 197, 66, 0.35), rgba(212, 160, 23, 0.3));
+            border-color: var(--royal-gold);
+            box-shadow: 0 0 20px rgba(245, 197, 66, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .menu-nav-btn.active {
+            background: linear-gradient(135deg, var(--royal-gold), var(--deep-gold));
+            border-color: var(--royal-gold);
+            color: var(--night-black);
+            box-shadow: 0 0 25px rgba(245, 197, 66, 0.6);
+            font-weight: 800;
+        }
+
+        /* Menu Category Visibility */
+        .royal-category {
+            display: none !important;
+            margin-bottom: 100px;
+            position: relative;
+        }
+
+        .royal-category.active {
+            display: block !important;
+            animation: categoryFade 0.5s ease-in;
+        }
+
+        @keyframes categoryFade {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+/* Category Header Image Effect */
+.category-header {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 50px;
+    padding: 30px 40px;
+    background: linear-gradient(90deg, 
+        rgba(100, 27, 46, 0.2) 0%, 
+        rgba(245, 197, 66, 0.1) 50%, 
+        rgba(100, 27, 46, 0.2) 100%);
+    border: 1px solid rgba(245, 197, 66, 0.2);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+    min-height: 180px; /* Increased height for image */
+}
+
+.category-text {
+    flex: 1;
+    position: relative;
+    z-index: 2;
+}
+
+.category-image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 35%; /* Adjust width percentage as needed (20-35%) */
+    background-size: cover;
+    background-position: center;
+    mask-image: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 30%, rgba(0,0,0,0) 100%);
+    -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 30%, rgba(0,0,0,0) 100%);
+    z-index: 1;
+    opacity: 0.9;
+    transition: all 0.8s ease;
+}
+
+.category-header:hover .category-image {
+    opacity: 0.7;
+    transform: scale(1.05);
+    mask-image: linear-gradient(to left, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%);
+    -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%);
+}
+
+/* Existing category header before effect - update */
+.category-header:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: var(--transition);
+    z-index: 2;
+}
+
+.category-header:hover:before {
+    left: 100%;
+}
+
+/* Keep existing category styles, these are additions */
+.category-icon {
+    position: relative;
+    z-index: 3;
+}
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 50px;
+            padding: 30px 40px;
+            background: linear-gradient(90deg, 
+                rgba(100, 27, 46, 0.2) 0%, 
+                rgba(245, 197, 66, 0.1) 50%, 
+                rgba(100, 27, 46, 0.2) 100%);
+            border: 1px solid rgba(245, 197, 66, 0.2);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-header:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: var(--transition);
+        }
+
+        .category-header:hover:before {
+            left: 100%;
+        }
+
+        .category-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--royal-gold), var(--deep-gold));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--burgundy);
+            font-size: 2.5rem;
+            border: 3px solid var(--light-gold);
+            box-shadow: var(--glow);
+            flex-shrink: 0;
+        }
+
+        .category-title {
+            font-size: 2.2rem;
+            color: var(--royal-gold);
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .category-subtitle {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2rem;
+            color: var(--light-gold);
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+
+        /* Royal Menu Items */
+        .royal-menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(550px, 1fr));
+            gap: 40px;
+            perspective: 1000px;
+        }
+
+        .royal-menu-item {
+            background: linear-gradient(145deg, 
+                rgba(26, 22, 18, 0.9) 0%, 
+                rgba(44, 24, 16, 0.9) 100%);
+            border-radius: 15px;
+            padding: 40px;
+            border: 1px solid rgba(245, 197, 66, 0.3);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+            box-shadow: var(--royal-shadow);
+            background-attachment: local;
+        }
+
+        .menu-item-bg {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.4;
+            z-index: 0;
+            mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0) 100%);
+            -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0) 100%);
+        }
+
+        .royal-menu-item:before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--royal-gold), var(--burgundy), var(--royal-gold));
+            z-index: -1;
+            border-radius: 16px;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .royal-menu-item:hover {
+            transform: translateY(-15px) rotateX(5deg);
+            border-color: var(--royal-gold);
+            box-shadow: 
+                0 20px 50px rgba(0, 0, 0, 0.6),
+                0 0 30px rgba(245, 197, 66, 0.3);
+        }
+
+        .royal-menu-item:hover:before {
+            opacity: 0.3;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .item-header:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, var(--royal-gold), transparent);
+        }
+
+        .item-name {
+            font-size: 1.8rem;
+            color: var(--royal-gold);
+            font-family: 'Cinzel', serif;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .item-price {
+            font-size: 1.4rem;
+            color: var(--light-gold);
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--royal-gold), var(--light-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .item-desc {
+            color: var(--cream);
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            line-height: 1.7;
+            font-style: italic;
+            opacity: 0.9;
+        }
+
+        .item-details {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .royal-tag {
+            background: linear-gradient(135deg, rgba(245, 197, 66, 0.2), rgba(100, 27, 46, 0.2));
+            color: var(--light-gold);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid rgba(245, 197, 66, 0.3);
+            backdrop-filter: blur(5px);
+        }
+
+        /* Special Items */
+        .royal-special {
+            background: linear-gradient(145deg, 
+                rgba(100, 27, 46, 0.3) 0%, 
+                rgba(245, 197, 66, 0.2) 50%, 
+                rgba(100, 27, 46, 0.3) 100%);
+            border: 2px solid var(--royal-gold);
+            position: relative;
+        }
+
+        .royal-special:before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            right: 30px;
+            font-size: 2rem;
+            z-index: 1;
+        }
+
+        .special-crown {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--royal-gold), var(--deep-gold));
+            color: var(--burgundy);
+            padding: 6px 16px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            border-radius: 15px;
+            text-transform: uppercase;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+            z-index: 2;
+        }
+
+        /* Services Section - Royal Services */
+        .services-section {
+            background: 
+                radial-gradient(circle at 30% 30%, rgba(245, 197, 66, 0.1) 0%, transparent 30%),
+                radial-gradient(circle at 70% 70%, rgba(100, 27, 46, 0.1) 0%, transparent 30%),
+                linear-gradient(to bottom, rgba(10, 8, 6, 0.95), rgba(26, 22, 18, 0.98));
+            padding: 120px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .services-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--royal-gold), transparent);
+        }
+
+        .royal-services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+            perspective: 1000px;
+        }
+
+        .royal-service-card {
+            background: linear-gradient(145deg, 
+                rgba(26, 22, 18, 0.8) 0%, 
+                rgba(44, 24, 16, 0.8) 100%);
+            border-radius: 20px;
+            padding: 35px 30px;
+            text-align: center;
+            border: 1px solid rgba(245, 197, 66, 0.2);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+            backdrop-filter: blur(10px);
+        }
+
+        .royal-service-card:before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--royal-gold), var(--burgundy), var(--royal-gold));
+            z-index: -1;
+            border-radius: 22px;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .royal-service-card:hover {
+            transform: translateY(-20px) rotateY(5deg);
+            border-color: var(--royal-gold);
+            box-shadow: 
+                0 30px 60px rgba(0, 0, 0, 0.6),
+                0 0 40px rgba(245, 197, 66, 0.3);
+        }
+
+        .royal-service-card:hover:before {
+            opacity: 0.4;
+        }
+
+        .service-icon {
+            font-size: 3.2rem;
+            color: var(--royal-gold);
+            margin-bottom: 22px;
+            display: inline-block;
+            padding: 18px;
+            background: linear-gradient(135deg, rgba(245, 197, 66, 0.1), rgba(100, 27, 46, 0.1));
+            border-radius: 50%;
+            border: 2px solid rgba(245, 197, 66, 0.3);
+            transition: var(--transition);
+        }
+
+        .royal-service-card:hover .service-icon {
+            transform: scale(1.2) rotate(15deg);
+            background: linear-gradient(135deg, rgba(245, 197, 66, 0.3), rgba(100, 27, 46, 0.3));
+            box-shadow: var(--glow);
+        }
+
+        .royal-service-card h3 {
+            font-size: 1.7rem;
+            color: var(--royal-gold);
+            margin-bottom: 15px;
+            font-family: 'Cinzel', serif;
+        }
+
+        .royal-service-card p {
+            color: var(--cream);
+            font-size: 1rem;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(to bottom, rgba(10, 8, 6, 0.95), rgba(26, 22, 18, 0.98));
+            padding: 120px 0;
+            position: relative;
+        }
+
+        .royal-contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+        }
+
+        .royal-contact-item {
+            background: linear-gradient(145deg, 
+                rgba(26, 22, 18, 0.7) 0%, 
+                rgba(44, 24, 16, 0.7) 100%);
+            border-radius: 20px;
+            padding: 35px 30px;
+            text-align: center;
+            border: 1px solid rgba(245, 197, 66, 0.2);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .royal-contact-item:hover {
+            transform: translateY(-15px);
+            border-color: var(--royal-gold);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.5),
+                0 0 30px rgba(245, 197, 66, 0.2);
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            color: var(--royal-gold);
+            margin-bottom: 22px;
+            display: inline-block;
+            padding: 16px;
+            background: linear-gradient(135deg, rgba(245, 197, 66, 0.1), rgba(100, 27, 46, 0.1));
+            border-radius: 50%;
+        }
+
+        .royal-contact-item h3 {
+            font-size: 1.6rem;
+            color: var(--royal-gold);
+            margin-bottom: 15px;
+            font-family: 'Cinzel', serif;
+        }
+
+        .royal-contact-item p {
+            color: var(--cream);
+            font-size: 1rem;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        /* Royal Footer */
+        footer {
+            background: linear-gradient(180deg, rgba(10, 8, 6, 0.95) 0%, rgba(26, 22, 18, 1) 100%);
+            padding: 80px 0 40px;
+            position: relative;
+            border-top: 1px solid rgba(245, 197, 66, 0.2);
+        }
+
+        footer:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--royal-gold), transparent);
+        }
+
+        .royal-footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .royal-footer-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .footer-logo-img {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--royal-gold), var(--deep-gold));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--burgundy);
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            border: 2px solid var(--royal-gold);
+            box-shadow: var(--glow);
+            overflow: hidden;
+        }
+
+        .footer-logo-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .royal-tagline {
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.8rem;
+            color: var(--light-gold);
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .royal-footer-text {
+            color: var(--cream);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            opacity: 0.85;
+            max-width: 350px;
+        }
+
+        .royal-footer-links h4 {
+            color: var(--royal-gold);
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            font-family: 'Cinzel', serif;
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .royal-footer-links h4:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--royal-gold), transparent);
+        }
+
+        .royal-footer-links ul {
+            list-style: none;
+        }
+
+        .royal-footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .royal-footer-links a {
+            color: var(--cream);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .royal-footer-links a:hover {
+            color: var(--royal-gold);
+            padding-left: 8px;
+        }
+
+        .royal-footer-links a i {
+            color: var(--royal-gold);
+            font-size: 0.85rem;
+        }
+
+        .royal-social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .royal-social-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, rgba(245, 197, 66, 0.1), rgba(100, 27, 46, 0.1));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--royal-gold);
+            font-size: 1.1rem;
+            transition: var(--transition);
+            border: 1px solid rgba(245, 197, 66, 0.3);
+            text-decoration: none;
+        }
+
+        .royal-social-icon:hover {
+            background: linear-gradient(135deg, var(--royal-gold), var(--deep-gold));
+            color: var(--burgundy);
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: var(--glow);
+        }
+
+        .royal-copyright {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(245, 197, 66, 0.1);
+            color: var(--cream);
+            font-size: 0.9rem;
+            opacity: 0.75;
+        }
+
+        .royal-copyright p {
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1400px) {
+            .royal-menu-grid {
+                grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .hero h1 {
+                font-size: 4rem;
+            }
+            
+            .section-title h2 {
+                font-size: 3.5rem;
+            }
+            
+            .category-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            header {
+                padding: 12px 0;
+            }
+            
+            .header-container {
+                padding: 0 20px;
+                gap: 15px;
+                justify-content: flex-start;
+            }
+            
+            .logo-container {
+                gap: 15px;
+            }
+            
+            .logo-img {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .logo-text {
+                font-size: 1.4rem;
+                letter-spacing: 1.5px;
+            }
+            
+            .logo-subtext {
+                font-size: 0.9rem;
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: linear-gradient(180deg, rgba(26, 22, 18, 0.98) 0%, rgba(10, 8, 6, 0.95) 100%);
+                flex-direction: column;
+                padding: 30px 20px;
+                gap: 15px;
+                border-top: 1px solid rgba(245, 197, 66, 0.2);
+                z-index: 1000;
+                backdrop-filter: blur(20px);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links a {
+                font-size: 0.95rem;
+                padding: 12px 15px;
+                border-bottom: 1px solid rgba(245, 197, 66, 0.15);
+            }
+            
+            .nav-links a:last-child {
+                border-bottom: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                background: none;
+                border: none;
+                color: var(--royal-gold);
+                font-size: 1.8rem;
+                cursor: pointer;
+                padding: 8px;
+                transition: var(--transition);
+            }
+            
+            .mobile-menu-btn:hover {
+                transform: scale(1.1);
+            }
+            
+            .royal-phone {
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+            
+            .royal-phone span {
+                display: none;
+            }
+            
+            .royal-phone i {
+                font-size: 1.3rem;
+            }
+            
+            .hero {
+                margin-top: 90px;
+            }
+            
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+            
+            .hero .script-font {
+                font-size: 2.8rem;
+            }
+            
+            .royal-menu-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .royal-menu-item {
+                padding: 20px;
+            }
+            
+            .item-name {
+                font-size: 1.3rem;
+            }
+            
+            .item-price {
+                font-size: 1.4rem;
+            }
+            
+            .item-desc {
+                font-size: 0.95rem;
+                margin-bottom: 12px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 10px 0;
+            }
+            
+            .header-container {
+                padding: 0 15px;
+                gap: 10px;
+                justify-content: flex-start;
+            }
+            
+            .logo-container {
+                gap: 12px;
+            }
+            
+            .logo-img {
+                width: 55px;
+                height: 55px;
+            }
+            
+            .logo-text {
+                font-size: 1.3rem;
+                letter-spacing: 1.2px;
+            }
+            
+            .logo-subtext {
+                font-size: 0.85rem;
+                margin-top: 2px;
+            }
+            
+            .mobile-menu-btn {
+                font-size: 1.6rem;
+                padding: 6px;
+            }
+            
+            .royal-phone i {
+                font-size: 1.2rem;
+            }
+            
+            .container {
+                padding: 0 20px;
+            }
+            
+            .hero {
+                height: 80vh;
+                margin-top: 85px;
+                background-attachment: scroll;
+            }
+            
+            .hero h1 {
+                font-size: 3.2rem;
+                margin-bottom: 20px;
+                letter-spacing: 2px;
+            }
+            
+            .hero .script-font {
+                font-size: 2.4rem;
+                margin-bottom: 20px;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+                margin-bottom: 35px;
+                max-width: 90%;
+            }
+            
+            .royal-cta {
+                padding: 16px 40px;
+                font-size: 1.1rem;
+                letter-spacing: 1.5px;
+            }
+            
+            .section {
+                padding: 80px 0;
+            }
+            
+            .section {
+                padding: 80px 0;
+            }
+            
+            .menu-nav-container {
+                gap: 8px;
+                margin: 40px 0;
+            }
+            
+            .menu-nav-btn {
+                padding: 10px 14px;
+                font-size: 0.75rem;
+                gap: 6px;
+            }
+            
+            .menu-nav-btn i {
+                font-size: 0.9rem;
+            }
+            
+            .royal-menu-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .royal-menu-item {
+                padding: 16px;
+                border-radius: 12px;
+            }
+            
+            .item-header {
+                margin-bottom: 12px;
+            }
+            
+            .item-name {
+                font-size: 1.1rem;
+            }
+            
+            .item-price {
+                font-size: 1.2rem;
+            }
+            
+            .item-desc {
+                font-size: 0.85rem;
+                margin-bottom: 8px;
+                line-height: 1.5;
+            }
+            
+            .item-details {
+                gap: 8px;
+                margin-top: 8px;
+            }
+            
+            .royal-tag {
+                padding: 5px 12px;
+                font-size: 0.75rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.8rem;
+                padding: 0 30px 15px;
+            }
+            
+            .category-header {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px 20px;
+            }
+            
+            .category-icon {
+                width: 80px;
+                height: 80px;
+                font-size: 2rem;
+            }
+            
+            .category-title {
+                font-size: 2.2rem;
+            }
+            
+            .royal-cta {
+                padding: 18px 40px;
+                font-size: 1.1rem;
+            }
+            
+            .royal-menu-item {
+                padding: 30px 25px;
+            }
+        }
+
+        /* ULTRA-SMALL PHONES (320px - 480px) */
+        @media (max-width: 480px) {
+            .logo-text {
+                font-size: 1rem;
+            }
+
+            .logo-subtext {
+                font-size: 0.7rem;
+            }
+
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+
+            .hero .script-font {
+                font-size: 1.4rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+                margin-bottom: 20px;
+            }
+
+            .section-title h2 {
+                font-size: 1.5rem;
+            }
+
+            .section-title p {
+                font-size: 0.95rem;
+            }
+
+            .menu-nav-btn {
+                padding: 6px 10px;
+                font-size: 0.65rem;
+            }
+
+            .category-title {
+                font-size: 1.3rem;
+            }
+
+            .item-name {
+                font-size: 0.85rem;
+            }
+
+            .item-price {
+                font-size: 0.8rem;
+            }
+
+            .royal-service-card h3,
+            .royal-contact-item h3 {
+                font-size: 1rem;
+            }
+
+            .royal-footer-text {
+                font-size: 0.8rem;
+            }
+
+            .royal-footer-links h4 {
+                font-size: 1rem;
+            }
+
+            footer {
+                padding: 40px 12px 25px;
+            }
+
+            .section {
+                padding: 40px 12px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            /* HEADER MOBILE */
+            header {
+                padding: 8px 0;
+            }
+            
+            .header-container {
+                padding: 0 12px;
+                gap: 8px;
+                justify-content: space-between;
+            }
+            
+            .logo-img {
+                width: 48px;
+                height: 48px;
+                border-width: 2px;
+                font-size: 1.2rem;
+            }
+            
+            .logo-text {
+                font-size: 1.1rem;
+                letter-spacing: 0.8px;
+            }
+            
+            .logo-subtext {
+                font-size: 0.75rem;
+                margin-top: 2px;
+            }
+            
+            .mobile-menu-btn {
+                font-size: 1.6rem;
+                padding: 5px;
+                margin-right: 8px;
+            }
+            
+            .royal-phone {
+                padding: 6px 10px;
+                gap: 6px;
+                font-size: 0.8rem;
+            }
+            
+            .royal-phone i {
+                font-size: 1rem;
+            }
+            
+            .nav-links a {
+                font-size: 0.85rem;
+            }
+            
+            /* HERO SECTION MOBILE */
+            .hero {
+                height: 100vh;
+                margin-top: 70px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-attachment: scroll;
+                background: 
+                    linear-gradient(to bottom, transparent 0%, rgba(10, 8, 6, 0.7) 40%, rgba(10, 8, 6, 0.95) 100%),
+                    url('https://media.istockphoto.com/id/995903748/photo/smoked-and-spicy-tandoori-chicken-grilling-with-smoke.jpg?s=612x612&w=0&k=20&c=xq_apF2Osk5HYFOgBS9crRi1puLozxyGWFuCUV0mhYg=') top right / 15% auto no-repeat,
+                    linear-gradient(to bottom, rgba(10, 8, 6, 0.85), rgba(10, 8, 6, 0.95));
+            }
+            
+            .hero-content {
+                max-width: 100%;
+                padding: 15px 12px;
+                text-align: center;
+                z-index: 2;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+                margin-bottom: 12px;
+                letter-spacing: 1px;
+                line-height: 1.2;
+                text-shadow: 0 0 15px rgba(245, 197, 66, 0.4), 2px 2px 3px rgba(0, 0, 0, 0.8);
+            }
+            
+            .hero .script-font {
+                font-size: 1.6rem;
+                margin-bottom: 12px;
+            }
+            
+            .hero p {
+                font-size: 0.95rem;
+                color: var(--light-gold);
+                margin-bottom: 25px;
+                line-height: 1.5;
+                padding: 0 5px;
+            }
+            
+            .royal-cta {
+                padding: 12px 28px;
+                font-size: 0.9rem;
+                letter-spacing: 1px;
+            }
+            
+            /* SECTIONS MOBILE */
+            .section {
+                padding: 50px 15px;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+                margin-bottom: 12px;
+            }
+            
+            .section-title p {
+                font-size: 1.1rem;
+                margin-top: 10px;
+            }
+            
+            /* MENU NAVIGATION MOBILE */
+            .menu-nav-container {
+                padding: 20px 10px;
+                gap: 8px;
+                flex-wrap: wrap;
+            }
+            
+            .menu-nav-btn {
+                padding: 8px 12px;
+                font-size: 0.7rem;
+                gap: 5px;
+                border-radius: 20px;
+                letter-spacing: 0.5px;
+            }
+            
+            .menu-nav-btn i {
+                font-size: 0.8rem;
+            }
+            
+            /* MENU ITEMS MOBILE */
+            .royal-menu-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            
+            .category-header {
+                gap: 20px;
+                margin-bottom: 35px;
+                flex-direction: column;
+            }
+            
+            .category-header-image {
+                width: 100%;
+                height: 200px;
+            }
+            
+            .category-info {
+                text-align: center;
+            }
+            
+            .category-title {
+                font-size: 1.6rem;
+                margin-bottom: 8px;
+            }
+            
+            .category-desc {
+                font-size: 0.85rem;
+            }
+            
+            .royal-menu-item {
+                padding: 12px 10px;
+                border-radius: 8px;
+            }
+            
+            .item-header {
+                margin-bottom: 6px;
+                gap: 6px;
+            }
+            
+            .item-name {
+                font-size: 0.95rem;
+                line-height: 1.2;
+            }
+            
+            .item-price {
+                font-size: 0.9rem;
+            }
+            
+            .item-desc {
+                font-size: 0.75rem;
+                margin-bottom: 5px;
+                line-height: 1.3;
+            }
+            
+            .item-details {
+                gap: 5px;
+                margin-top: 5px;
+            }
+            
+            .royal-tag {
+                padding: 3px 8px;
+                font-size: 0.6rem;
+                border-radius: 10px;
+            }
+            
+            /* SERVICES & CONTACT MOBILE */
+            .royal-services-grid,
+            .royal-contact-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .royal-service-card,
+            .royal-contact-item {
+                padding: 25px 15px;
+            }
+            
+            .royal-service-card i,
+            .royal-contact-item i {
+                font-size: 2.5rem;
+                margin-bottom: 12px;
+            }
+            
+            .royal-service-card h3,
+            .royal-contact-item h3 {
+                font-size: 1.2rem;
+                margin-bottom: 8px;
+            }
+            
+            .royal-service-card p,
+            .royal-contact-item p {
+                font-size: 0.85rem;
+                line-height: 1.5;
+            }
+            
+            /* FOOTER MOBILE */
+            footer {
+                padding: 50px 15px 30px;
+            }
+            
+            .royal-footer-content {
+                grid-template-columns: 1fr;
+                gap: 35px;
+                margin-bottom: 40px;
+            }
+            
+            .royal-footer-logo {
+                align-items: center;
+                text-align: center;
+                border-bottom: 1px solid rgba(245, 197, 66, 0.15);
+                padding-bottom: 30px;
+            }
+            
+            .footer-logo-img {
+                width: 60px;
+                height: 60px;
+                margin-bottom: 15px;
+                font-size: 1.5rem;
+            }
+            
+            .royal-tagline {
+                font-size: 1.4rem;
+                margin-bottom: 12px;
+            }
+            
+            .royal-footer-text {
+                font-size: 0.85rem;
+                text-align: center;
+                max-width: 100%;
+            }
+            
+            .royal-footer-links h4 {
+                font-size: 1.1rem;
+                margin-bottom: 15px;
+                text-align: center;
+            }
+            
+            .royal-footer-links ul {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .royal-footer-links a {
+                font-size: 0.85rem;
+                justify-content: center;
+            }
+            
+            .royal-social-icons {
+                justify-content: center;
+                gap: 12px;
+            }
+            
+            .royal-social-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            
+            .royal-copyright {
+                padding-top: 25px;
+                font-size: 0.75rem;
+            }
+        }
+
+        /* Royal Decorative Elements */
+        .royal-corner {
+            position: fixed;
+            width: 100px;
+            height: 100px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .corner-tl {
+            top: 0;
+            left: 0;
+            border-top: 2px solid var(--royal-gold);
+            border-left: 2px solid var(--royal-gold);
+        }
+
+        .corner-tr {
+            top: 0;
+            right: 0;
+            border-top: 2px solid var(--royal-gold);
+            border-right: 2px solid var(--royal-gold);
+        }
+
+        .corner-bl {
+            bottom: 0;
+            left: 0;
+            border-bottom: 2px solid var(--royal-gold);
+            border-left: 2px solid var(--royal-gold);
+        }
+
+        .corner-br {
+            bottom: 0;
+            right: 0;
+            border-bottom: 2px solid var(--royal-gold);
+            border-right: 2px solid var(--royal-gold);
+        }
+
+        /* Star Effect */
+        .star {
+            position: fixed;
+            background-color: var(--royal-gold);
+            border-radius: 50%;
+            animation: twinkle 4s infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.2); }
+
+            
+        }/* ================================================= */
+/* PHONE-ONLY NAVBAR & MENU RE-ORGANIZATION (PREMIUM) */
+/* ================================================= */
+
+@media (max-width: 768px) {
+
+    /* ---------- TOP NAVBAR LAYOUT FIX ---------- */
+    .header-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    nav {
+        flex: unset;
+        justify-content: flex-end;
+    }
+
+    /* MENU ICON + PHONE ICON SIDE BY SIDE */
+    .mobile-menu-btn {
+        margin-right: 15px;
+        font-size: 1.8rem;
+        transition: transform 0.3s ease;
+    }
+
+    .mobile-menu-btn:active {
+        transform: scale(0.9);
+    }
+
+    .royal-phone {
+        padding: 10px 16px;
+        gap: 8px;
+        border-radius: 40px;
+    }
+
+    .royal-phone i {
+        font-size: 1.2rem;
+    }
+
+    /* ---------- MOBILE MENU CONTAINER ---------- */
+    .nav-links {
+        padding: 20px;
+        gap: 0;
+        border-radius: 0 0 20px 20px;
+        animation: mobileMenuDrop 0.45s ease forwards;
+    }
+
+    @keyframes mobileMenuDrop {
+        from {
+            opacity: 0;
+            transform: translateY(-15px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* ---------- TABLE-LIKE MENU ITEMS ---------- */
+    .nav-links a {
+        font-size: 0.95rem;
+        padding: 14px 12px;
+        border-bottom: 1px solid rgba(245, 197, 66, 0.15);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        position: relative;
+        animation: menuRowFade 0.4s ease forwards;
+    }
+
+    .nav-links a:last-child {
+        border-bottom: none;
+    }
+
+    @keyframes menuRowFade {
+        from {
+            opacity: 0;
+            transform: translateX(-12px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    /* RIGHT ARROW INDICATOR (APP FEEL) */
+    .nav-links a:after {
+        content: '›';
+        font-size: 1.4rem;
+        color: var(--royal-gold);
+        opacity: 0.6;
+        transform: translateX(-5px);
+        transition: var(--transition);
+    }
+
+    .nav-links a:active:after {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    /* ---------- TAP FEEDBACK ---------- */
+    .nav-links a:active {
+        background: rgba(245, 197, 66, 0.08);
+        transform: scale(0.98);
+    }
+
+    /* ---------- HERO TEXT SIZE CONTROL ---------- */
+    .hero h1 {
+        font-size: 2.4rem;
+    }
+
+    .hero p {
+        font-size: 1.1rem;
+    }
+
+    /* ---------- MENU CARDS COMPACT ---------- */
+    .royal-menu-item {
+        padding: 24px 22px;
+    }
+
+    .item-name {
+        font-size: 1.4rem;
+    }
+
+    .item-price {
+        font-size: 1.6rem;
+    }
+
+    /* ---------- CATEGORY HEADER IMAGE CONTROL ---------- */
+    .category-image {
+        width: 45%;
+        opacity: 0.8;
+    }
+
+    /* ---------- SMOOTH PAGE FEEL ---------- */
+    body {
+        scroll-behavior: smooth;
+    }
+}
+
+    /* Additional styling for better organization */
+    .royal-services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 40px;
+        perspective: 1000px;
+    }
+    
+    .royal-service-card p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: var(--cream);
+        opacity: 0.9;
+    }
+    
+    @media (max-width: 768px) {
+        .royal-services-grid {
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+        
+        .royal-service-card {
+            padding: 40px 30px;
+        }
+        
+        .service-icon {
+            font-size: 3.5rem;
+            padding: 20px;
+        }
+        
+        .royal-service-card h3 {
+            font-size: 1.8rem;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .services-section {
+            padding: 80px 0;
+        }
+        
+        .royal-service-card {
+            padding: 30px 20px;
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            padding: 15px;
+        }
+        
+        .royal-service-card h3 {
+            font-size: 1.6rem;
+        }
+        
+        .royal-service-card p {
+            font-size: 1rem;
+        }
+    }
+</style>
+    </style>
+</head>
+<body>
+    <!-- Royal Corner Decorations -->
+    <div class="royal-corner corner-tl"></div>
+    <div class="royal-corner corner-tr"></div>
+    <div class="royal-corner corner-bl"></div>
+    <div class="royal-corner corner-br"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+             <div class="logo-container">
+                <div class="logo-img"><img src="logo.ico" alt="Logo"></div>
+                <div>
+                    <div class="logo-text">SHAHI QILA</div>
+                    <div class="logo-subtext">Since 1985</div>
+                </div>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-crown"></i>
+            </button>
+            
+            <nav>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home">Royal Entrance</a></li>
+                    <li><a href="#menu">Royal Feast</a></li>
+                    <li><a href="#services">Royal Services</a></li>
+                    <li><a href="#contact">Royal Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="royal-phone">
+                <i class="fas fa-phone"></i>
+                <span>0330-6863355</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="logo-real">
+           <img src="logo.png" alt="Logo">
+               </div>
+        <div class="container hero-content">
+            <span class="script-font">Welcome to</span>
+            <h1>THE ROYAL CULINARY PALACE</h1>
+            <span class="script-font">of Lahore</span>
+            <p>Where every meal is a celebration of centuries-old recipes, crafted with royal precision and served in an ambiance worthy of kings. Experience the legacy of Mughal cuisine reimagined for the modern connoisseur.</p>
+            <button class="royal-cta" onclick="document.getElementById('menu').scrollIntoView({behavior: 'smooth'})">
+                Discover Our Royal Feast
+            </button>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <!-- Menu Section -->
+<section class="section" id="menu">
+    <div class="container">
+        <div class="section-title">
+            <h2>THE ROYAL FEAST</h2>
+            <p class="script-font" style="font-size: 2rem; margin-top: 20px;">A Culinary Journey Through Royal Recipes</p>
+        </div>
+        
+        <!-- Category Navigation Menu -->
+        <div class="menu-nav-container">
+            <button class="menu-nav-btn active" data-category="starters">
+                <i class="fas fa-crown"></i> Starters
+            </button>
+            <button class="menu-nav-btn" data-category="handi">
+                <i class="fas fa-mortar-pestle"></i> Handi & Karahi
+            </button>
+            <button class="menu-nav-btn" data-category="bbq">
+                <i class="fas fa-utensil-spoon"></i> B.B.Q Platters
+            </button>
+            <button class="menu-nav-btn" data-category="chinese">
+                <i class="fas fa-utensils"></i> Chinese
+            </button>
+            <button class="menu-nav-btn" data-category="tandoor">
+                <i class="fas fa-fire"></i> Tandoor
+            </button>
+            <button class="menu-nav-btn" data-category="burgers">
+                <i class="fas fa-hamburger"></i> Burgers
+            </button>
+            <button class="menu-nav-btn" data-category="wraps">
+                <i class="fas fa-burrito"></i> Wraps
+            </button>
+            <button class="menu-nav-btn" data-category="pizza">
+                <i class="fas fa-pizza-slice"></i> Pizza
+            </button>
+            <button class="menu-nav-btn" data-category="sandwich">
+                <i class="fas fa-sandwich"></i> Sandwich & Pasta
+            </button>
+            <button class="menu-nav-btn" data-category="desserts">
+                <i class="fas fa-cake-candles"></i> Desserts
+            </button>
+            <button class="menu-nav-btn" data-category="beverages">
+                <i class="fas fa-glass-cheers"></i> Beverages
+            </button>
+        </div>
+        
+        <!-- STARTERS - Royal Appetizers -->
+        <div class="royal-category" data-category="starters">
+            <div class="category-header">
+                <div class="category-icon">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <div class="category-text">
+                    <h3 class="category-title">ROYAL STARTERS | اسٹارٹرز</h3>
+                    <div class="category-subtitle">Begin Your Royal Journey</div>
+                </div>
+                <div class="category-image" style="background-image: url('https://images.pexels.com/photos/2338407/pexels-photo-2338407.jpeg?auto=compress&cs=tinysrgb&w=600')"></div>
+            </div>
+            
+            <div class="royal-menu-grid">
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">B.B.Q Plate</h4>
+                        <div class="item-price">1350/-</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Chicken Strips</h4>
+                        <div class="item-price">200/-</div>
+                    </div>
+                    <p class="item-desc">4 crispy pieces with tandoori sauce</p>
+                </div>
+                
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Mexican Crispy Tacos</h4>
+                        <div class="item-price">200/-</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Chicken Kabab (4 pcs)</h4>
+                        <div class="item-price">745/-</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Beef Kabab (4 pcs)</h4>
+                        <div class="item-price">845/-</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item royal-special">
+                    <div class="special-crown">POPULAR</div>
+                    <div class="item-header">
+                        <h4 class="item-name">Chicken Tikka Boti (12 pcs)</h4>
+                        <div class="item-price">745/-</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Malai Boti (12 pcs)</h4>
+                        <div class="item-price">1150/-</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Reshmi Kabab (4 pcs)</h4>
+                        <div class="item-price">950/-</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Boneless Tikka (12 pcs)</h4>
+                        <div class="item-price">1150/-</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Achari Boti (4 pcs)</h4>
+                        <div class="item-price">1150/-</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Tikka Pie (1 pcs)</h4>
+                        <div class="item-price">399/-</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Nachos Bites (8 pcs)</h4>
+                        <div class="item-price">480/-</div>
+                    </div>
+                    <p class="item-desc">Chicken, cheese, sour cream & salsa</p>
+                </div>
+                
+                <div class="royal-menu-item royal-special">
+                    <div class="special-crown">SPECIAL</div>
+                    <div class="item-header">
+                        <h4 class="item-name">Loaded Fries</h4>
+                        <div class="item-price">650/-</div>
+                    </div>
+                    <p class="item-desc">With masala cheese & garlic sauce</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- TRADITIONAL HANDI & KARAHI -->
+        <div class="royal-category" data-category="handi">
+            <div class="category-header">
+                <div class="category-icon">
+                    <i class="fas fa-mortar-pestle"></i>
+                </div>
+                <div class="category-text">
+                    <h3 class="category-title">TRADITIONAL HANDI & KARAHI | ہنڈی اور کڑاہی</h3>
+                    <div class="category-subtitle">Royal Clay Pot Delights</div>
+                </div>
+                <div class="category-image" style="background-image: url('https://images.pexels.com/photos/2474661/pexels-photo-2474661.jpeg?auto=compress&cs=tinysrgb&w=600')"></div>
+            </div>
+            
+            <div class="royal-menu-grid">
+                <div class="royal-menu-item royal-special">
+                    <div class="special-crown">SIGNATURE</div>
+                    <div class="item-header">
+                        <h4 class="item-name">Lemon Chilli Chicken</h4>
+                        <div class="item-price">1350/-</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Jalfrezi</h4>
+                        <div class="item-price">1150/-</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Ginger</h4>
+                        <div class="item-price">1150/-</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Rajasthani</h4>
+                        <div class="item-price">1150/-</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Peri Peri</h4>
+                        <div class="item-price">1150/-</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item royal-special">
+                    <div class="special-crown">BEST SELLER</div>
+                    <div class="item-header">
+                        <h4 class="item-name">Shahi Chicken Karahi</h4>
+                        <div class="item-price">950/- (FULL)<br>1650/- (HALF)</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Shahi Mutton Karahi</h4>
+                        <div class="item-price">2250/- (HALF)<br>3450/- (FULL)</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Mutton Shinwari</h4>
+                        <div class="item-price">2250/- / 3450/-</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Lemon Chilli Mutton</h4>
+                        <div class="item-price">2250/- / 3650/-</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- B.B.Q PLATTERS -->
+        <div class="royal-category" data-category="bbq">
+            <div class="category-header">
+                <div class="category-icon">
+                    <i class="fas fa-utensil-spoon"></i>
+                </div>
+                <div class="category-text">
+                    <h3 class="category-title">B.B.Q PLATTERS | بی بی کیو پلیٹر</h3>
+                    <div class="category-subtitle">Royal Sharing Platters</div>
+                </div>
+                <div class="category-image" style="background-image: url('https://images.pexels.com/photos/6210876/pexels-photo-6210876.jpeg?auto=compress&cs=tinysrgb&w=600')"></div>
+            </div>
+            
+            <div class="royal-menu-grid">
+                <div class="royal-menu-item royal-special">
+                    <div class="special-crown">FAMILY FEAST</div>
+                    <div class="item-header">
+                        <h4 class="item-name">B.B.Q Platter 1 (4 persons)</h4>
+                        <div class="item-price">3850/-</div>
+                    </div>
+                    <p class="item-desc">Shahi Chicken 65, Lemon Chilli Chicken, Chicken Kabab, Beef Kabab, Achari Boti, Boneless Tikka, Malai Boti</p>
+                </div>
+                
+                <div class="royal-menu-item royal-special">
+                    <div class="special-crown">COUPLE SPECIAL</div>
+                    <div class="item-header">
+                        <h4 class="item-name">B.B.Q Platter 2 (2 persons)</h4>
+                        <div class="item-price">2050/-</div>
+                    </div>
+                    <p class="item-desc">Chicken Leg/Breast served with Egg Fried Rice or Garlic Rice</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CHINESE -->
+        <div class="royal-category" data-category="chinese">
+            <div class="category-header">
+                <div class="category-icon">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <div class="category-text">
+                    <h3 class="category-title">CHINESE | چائنیز</h3>
+                    <div class="category-subtitle">Oriental Royal Delights</div>
+                </div>
+                <div class="category-image" style="background-image: url('https://images.pexels.com/photos/2347311/pexels-photo-2347311.jpeg?auto=compress&cs=tinysrgb&w=600')"></div>
+            </div>
+            
+            <div class="royal-menu-grid">
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Cream of Chicken Soup</h4>
+                        <div class="item-price">375/-</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Hot & Sour Soup</h4>
+                        <div class="item-price">299/-</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Dry Chilli Beef or Chicken</h4>
+                        <div class="item-price">950/-</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item royal-special">
+                    <div class="special-crown">SPECIAL</div>
+                    <div class="item-header">
+                        <h4 class="item-name">Cashew Nut Chicken</h4>
+                        <div class="item-price">1350/-</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Corn Soup</h4>
+                        <div class="item-price">299/-</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Manchurian</h4>
+                        <div class="item-price">950/-</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- TANDOOR -->
+        <div class="royal-category" data-category="tandoor">
+            <div class="category-header">
+                <div class="category-icon">
+                    <i class="fas fa-fire"></i>
+                </div>
+                <div class="category-text">
+                    <h3 class="category-title">TANDOOR | تندور</h3>
+                    <div class="category-subtitle">Clay Oven Freshness</div>
+                </div>
+                <div class="category-image" style="background-image: url('https://png.pngtree.com/background/20250127/original/pngtree-a-plate-of-tandoori-chicken-popular-indian-dish-consisting-roasted-prepared-picture-image_15795428.jpg')"></div>
+            </div>
+            
+            <div class="royal-menu-grid">
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Naan (6 pcs)</h4>
+                        <div class="item-price">65/-</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item royal-special">
+                    <div class="special-crown">BEST SELLER</div>
+                    <div class="item-header">
+                        <h4 class="item-name">Cheese Naan</h4>
+                        <div class="item-price">550/-</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Garlic Naan</h4>
+                        <div class="item-price">95/-</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item royal-special">
+                    <div class="special-crown">POPULAR</div>
+                    <div class="item-header">
+                        <h4 class="item-name">Chicken Cheese Naan</h4>
+                        <div class="item-price">550/-</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Saada Roti</h4>
+                        <div class="item-price">50/-</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Rogni Naan</h4>
+                        <div class="item-price">75/-</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Kalongi Naan</h4>
+                        <div class="item-price">85/-</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- BURGERS -->
+        <div class="royal-category" data-category="burgers">
+            <div class="category-header">
+                <div class="category-icon">
+                    <i class="fas fa-hamburger"></i>
+                </div>
+                <div class="category-text">
+                    <h3 class="category-title">BURGERS | برگرز</h3>
+                    <div class="category-subtitle">Royal Burger Experience</div>
+                </div>
+                <div class="category-image" style="background-image: url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80')"></div>
+            </div>
+            
+            <div class="royal-menu-grid">
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Chicken Kabab Burger</h4>
+                        <div class="item-price">545/-</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Grilled Chicken Burger</h4>
+                        <div class="item-price">545/-</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item royal-special">
+                    <div class="special-crown">POPULAR</div>
+                    <div class="item-header">
+                        <h4 class="item-name">Zinger Burger</h4>
+                        <div class="item-price">490/-</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Crispy Crunch Burger</h4>
+                        <div class="item-price">545/-</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item royal-special">
+                    <div class="special-crown">SPECIAL</div>
+                    <div class="item-header">
+                        <h4 class="item-name">Smoki Beef Burger</h4>
+                        <div class="item-price">650/-</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- WRAPS -->
+        <div class="royal-category" data-category="wraps">
+            <div class="category-header">
+                <div class="category-icon">
+                    <i class="fas fa-burrito"></i>
+                </div>
+                <div class="category-text">
+                    <h3 class="category-title">WRAPS | ریپس</h3>
+                    <div class="category-subtitle">Royal Wrapped Delights</div>
+                </div>
+                <div class="category-image" style="background-image: url('https://thumbs.dreamstime.com/b/tortilla-wraps-tender-entrecote-beef-steak-tortilla-wraps-tender-sliced-roasted-entrecote-beef-steak-red-chili-pepper-109933043.jpg')"></div>
+            </div>
+            
+            <div class="royal-menu-grid">
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Lebanese Wrap</h4>
+                        <div class="item-price">550/-</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">California Wrap</h4>
+                        <div class="item-price">550/-</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- PIZZA -->
+        <div class="royal-category" data-category="pizza">
+            <div class="category-header">
+                <div class="category-icon">
+                    <i class="fas fa-pizza-slice"></i>
+                </div>
+                <div class="category-text">
+                    <h3 class="category-title">PIZZA | پیزا</h3>
+                    <div class="category-subtitle">Royal Wood Fired Pizzas</div>
+                </div>
+                <div class="category-image" style="background-image: url('https://rainhampizza.co.uk/img/pizza_1150632578.jpg')"></div>
+            </div>
+            
+            <div class="royal-menu-grid">
+                <div class="royal-menu-item royal-special">
+                    <div class="special-crown">SIGNATURE</div>
+                    <div class="item-header">
+                        <h4 class="item-name">Shahi Signature Pizza</h4>
+                        <div class="item-price">450/- (S)<br>950/- (M)<br>1450/- (L)</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Tikka Pizza</h4>
+                        <div class="item-price">450/- (S)<br>950/- (M)<br>1450/- (L)</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Fajita Pizza</h4>
+                        <div class="item-price">450/- (S)<br>950/- (M)<br>1450/- (L)</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Spicy Chicken Pizza</h4>
+                        <div class="item-price">450/- (S)<br>950/- (M)<br>1450/- (L)</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item royal-special">
+                    <div class="special-crown">SPECIAL</div>
+                    <div class="item-header">
+                        <h4 class="item-name">Super Supreme Pizza</h4>
+                        <div class="item-price">1400/- (M)<br>1999/- (L)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- SANDWICH & PASTA -->
+        <div class="royal-category" data-category="sandwich">
+            <div class="category-header">
+                <div class="category-icon">
+                    <i class="fas fa-bread-slice"></i>
+                </div>
+                <div class="category-text">
+                    <h3 class="category-title">SANDWICH & PASTA | سینڈوچ اور پاستا</h3>
+                    <div class="category-subtitle">Royal Comfort Food</div>
+                </div>
+                <div class="category-image" style="background-image: url('https://img.freepik.com/premium-photo/delicious-sandwitches-with-cheese_974629-100666.jpg')"></div>
+            </div>
+            
+            <div class="royal-menu-grid">
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Club Sandwich</h4>
+                        <div class="item-price">550/-</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Chicken Tikka Sandwich</h4>
+                        <div class="item-price">550/-</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Cold Sandwich</h4>
+                        <div class="item-price">480/-</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item royal-special">
+                    <div class="special-crown">SPECIAL</div>
+                    <div class="item-header">
+                        <h4 class="item-name">Mac n Cheese</h4>
+                        <div class="item-price">1050/-</div>
+                    </div>
+                    <p class="item-desc">With optional chicken or cheetos</p>
+                </div>
+                
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Tuscon Pasta</h4>
+                        <div class="item-price">950/-</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Alfredo Pasta</h4>
+                        <div class="item-price">950/-</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Chicken Chowmein</h4>
+                        <div class="item-price">850/-</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- DESSERTS -->
+        <div class="royal-category" data-category="desserts">
+            <div class="category-header">
+                <div class="category-icon">
+                    <i class="fas fa-ice-cream"></i>
+                </div>
+                <div class="category-text">
+                    <h3 class="category-title">DESSERTS | میٹھے</h3>
+                    <div class="category-subtitle">Royal Sweet Endings</div>
+                </div>
+                <div class="category-image" style="background-image: url('https://images.pexels.com/photos/2067396/pexels-photo-2067396.jpeg?auto=compress&cs=tinysrgb&w=600')"></div>
+            </div>
+            
+            <div class="royal-menu-grid">
+                <div class="royal-menu-item royal-special">
+                    <div class="special-crown">BEST SELLER</div>
+                    <div class="item-header">
+                        <h4 class="item-name">Brownie with Ice Cream</h4>
+                        <div class="item-price">550/-</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Ras Malai</h4>
+                        <div class="item-price">395/-</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Gulab Jamun (3 pcs)</h4>
+                        <div class="item-price">395/-</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Firni Thuthi (2 pcs)</h4>
+                        <div class="item-price">295/-</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item royal-special">
+                    <div class="special-crown">POPULAR</div>
+                    <div class="item-header">
+                        <h4 class="item-name">Death by Chocolate</h4>
+                        <div class="item-price">345/-</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Chocolate Oreo Shake</h4>
+                        <div class="item-price">345/-</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Vanilla Oreo Shake</h4>
+                        <div class="item-price">345/-</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Vanilla Caramel Shake</h4>
+                        <div class="item-price">345/-</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item royal-special">
+                    <div class="special-crown">SEASONAL</div>
+                    <div class="item-header">
+                        <h4 class="item-name">Mango Shake</h4>
+                        <div class="item-price">450/-</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Brownie Shake</h4>
+                        <div class="item-price">450/-</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- BEVERAGES -->
+        <div class="royal-category" data-category="beverages">
+            <div class="category-header">
+                <div class="category-icon">
+                    <i class="fas fa-glass-cheers"></i>
+                </div>
+                <div class="category-text">
+                    <h3 class="category-title">BEVERAGES | مشروبات</h3>
+                    <div class="category-subtitle">Royal Refreshments</div>
+                </div>
+                <div class="category-image" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQP06rnfeFHQt9hqRJl9RJ_XO5jRsSoCmRsgA&s')"></div>
+            </div>
+            
+            <div class="royal-menu-grid">
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Seasonal Fresh Juice</h4>
+                        <div class="item-price">199/- to 395/-</div>
+                    </div>
+                    <p class="item-desc">Peach, Pineapple, Cool Lime, Lemonade</p>
+                </div>
+                
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Soft Drink Tin</h4>
+                        <div class="item-price">130/-</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Mineral Water</h4>
+                        <div class="item-price">99/- (SMALL)<br>150/- (LARGE)</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Black Coffee</h4>
+                        <div class="item-price">350/-</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item royal-special">
+                    <div class="special-crown">SIGNATURE</div>
+                    <div class="item-header">
+                        <h4 class="item-name">Signature Cold Coffee</h4>
+                        <div class="item-price">399/-</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Cappuccino</h4>
+                        <div class="item-price">395/-</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Banana Shake</h4>
+                        <div class="item-price">345/-</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Tea</h4>
+                        <div class="item-price">175/-</div>
+                    </div>
+                </div>
+                
+                <div class="royal-menu-item">
+                    <div class="item-header">
+                        <h4 class="item-name">Carriemum Tea</h4>
+                        <div class="item-price">199/-</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</section>
+<section class="services-section" id="services">
+    <div class="container">
+        <div class="section-title">
+            <h2>ROYAL SERVICES</h2>
+            <p class="script-font" style="font-size: 2rem; margin-top: 20px;">Experience Royal Treatment</p>
+        </div>
+        
+        <div class="royal-services-grid">
+            <!-- Original Services -->
+            <div class="royal-service-card">
+                <div class="service-icon">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <h3>Royal Dine-In</h3>
+                <p>Experience our authentic cuisine in a royal dining environment with valet service</p>
+            </div>
+            
+            <div class="royal-service-card">
+                <div class="service-icon">
+                    <i class="fas fa-horse"></i>
+                </div>
+                <h3>Royal Delivery</h3>
+                <p>Get your royal feast delivered to your palace. Call: 0330-6863355</p>
+            </div>
+            
+            <div class="royal-service-card">
+                <div class="service-icon">
+                    <i class="fas fa-gem"></i>
+                </div>
+                <h3>Catering Services</h3>
+                <p>Make your events royal with our professional catering for weddings and gatherings</p>
+            </div>
+            
+            <div class="royal-service-card">
+                <div class="service-icon">
+                    <i class="fas fa-champagne-glasses"></i>
+                </div>
+                <h3>Private Events</h3>
+                <p>Host your celebrations in our exclusive royal banquet halls</p>
+            </div>
+            
+            <!-- New Accessibility Services -->
+            <div class="royal-service-card">
+                <div class="service-icon">
+                    <i class="fas fa-wheelchair"></i>
+                </div>
+                <h3>Royal Accessibility</h3>
+                <p>Wheelchair accessible entrance, parking, restrooms & seating for all guests</p>
+            </div>
+            
+            <!-- Service Options -->
+            <div class="royal-service-card">
+                <div class="service-icon">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <h3>Dining Options</h3>
+                <p>Outdoor seating • No-contact delivery • Takeout • Dine-in • Table service</p>
+            </div>
+            
+            <!-- Royal Highlights -->
+            <div class="royal-service-card">
+                <div class="service-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <h3>Royal Highlights</h3>
+                <p>Fireplace • Great coffee & desserts • Live music • Rooftop seating • Private dining</p>
+            </div>
+            
+            <!-- Culinary Experience -->
+            <div class="royal-service-card">
+                <div class="service-icon">
+                    <i class="fas fa-cheese"></i>
+                </div>
+                <h3>Royal Cuisine</h3>
+                <p>Halal food • Vegan & Vegetarian options • All you can eat • Small plates • Quick bites</p>
+            </div>
+            
+            <!-- Dining Hours -->
+            <div class="royal-service-card">
+                <div class="service-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h3>Royal Dining Hours</h3>
+                <p>Brunch • Lunch • Dinner • Dessert • Late-night food • Happy hour</p>
+            </div>
+            
+            <!-- Atmosphere -->
+            <div class="royal-service-card">
+                <div class="service-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h3>Royal Atmosphere</h3>
+                <p>Casual • Cozy • Historic • Romantic • Upscale • Quiet • Trendy settings</p>
+            </div>
+            
+            <!-- Family Friendly -->
+            <div class="royal-service-card">
+                <div class="service-icon">
+                    <i class="fas fa-child"></i>
+                </div>
+                <h3>Family Royalty</h3>
+                <p>Kids' menu • High chairs • Good for birthdays • Family-friendly environment</p>
+            </div>
+            
+            <!-- Convenience -->
+            <div class="royal-service-card">
+                <div class="service-icon">
+                    <i class="fas fa-parking"></i>
+                </div>
+                <h3>Royal Convenience</h3>
+                <p>Free parking lot & street parking • All major credit/debit cards • NFC payments</p>
+            </div>
+            
+            <!-- Planning -->
+            <div class="royal-service-card">
+                <div class="service-icon">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+                <h3>Royal Planning</h3>
+                <p>Reservations accepted • Lunch & dinner reservations recommended • Group bookings</p>
+            </div>
+        </div>
+    </div>
+</section>
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>ROYAL CONTACT</h2>
+                <p class="script-font" style="font-size: 2rem; margin-top: 20px;">Visit Our Royal Court</p>
+            </div>
+            
+            <div class="royal-contact-grid">
+                <div class="royal-contact-item" onclick="window.open('https://www.google.com/maps/place/Lahore+Shahi+Qila+Restaurant/@31.5787918,74.3696402,17z/data=!3m1!4b1!4m6!3m5!1s0x39191b1d4ef85991:0xed9e36c4b2ba9ea9!8m2!3d31.5787918!4d74.3696402!16s%2Fg%2F11sgrc0sbr?entry=ttu', '_blank')" style="cursor: pointer;">
+    <div class="contact-icon">
+        <i class="fas fa-map-marked-alt"></i>
+    </div>
+    <h3>Royal Location <i class="fas fa-external-link-alt" style="font-size: 1rem; margin-left: 8px; opacity: 0.8;"></i></h3>
+    <p style="position: relative; z-index: 2; pointer-events: none;">
+        140-A G.T Road, Singhpura<br>Lahore, Pakistan
+        <span style="display: block; font-size: 0.9rem; color: var(--royal-gold); margin-top: 5px; font-style: italic;">
+            Click for directions
+        </span>
+    </p>
+</div>
+                
+                <div class="royal-contact-item royal-special">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-volume"></i>
+                    </div>
+                    <h3>Royal Phone Lines</h3>
+                    <p>042-36863333<br>042-36863355<br>0330-6863355 (Royal Delivery)</p>
+                </div>
+                
+                <div class="royal-contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope-open-text"></i>
+                    </div>
+                    <h3>Royal Correspondence</h3>
+                    <p>lahoreshahigila4477@gmail.com<br>www.Lahoreshahigila.com.pk</p>
+                </div>
+                
+                <div class="royal-contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Royal Hours</h3>
+                    <p>Monday - Sunday<br>12:00 PM - 12:00 AM<br>Royal Delivery till 11:00 PM</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="royal-footer-content">
+                <!-- Brand Section -->
+                <div class="royal-footer-logo">
+                    <div class="footer-logo-img"><img src="logo.ico" alt="Shahi Qila Logo"></div>
+                    <div class="royal-tagline">Shahi Qila</div>
+                    <p class="royal-footer-text">Authentic royal Pakistani cuisine since 1985. Experience the legacy of Mughal flavors.</p>
+                    <div class="royal-social-icons">
+                        <a href="#" class="royal-social-icon" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="royal-social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="royal-social-icon" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="royal-social-icon" title="TripAdvisor"><i class="fab fa-tripadvisor"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class="royal-footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home"><i class="fas fa-crown"></i> Home</a></li>
+                        <li><a href="#menu"><i class="fas fa-utensils"></i> Menu</a></li>
+                        <li><a href="#services"><i class="fas fa-bell"></i> Services</a></li>
+                        <li><a href="#contact"><i class="fas fa-map-pin"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Services -->
+                <div class="royal-footer-links">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-chair"></i> Dine-In</a></li>
+                        <li><a href="#"><i class="fas fa-motorcycle"></i> Delivery</a></li>
+                        <li><a href="#"><i class="fas fa-glass-cheers"></i> Catering</a></li>
+                        <li><a href="#"><i class="fas fa-calendar"></i> Events</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div class="royal-footer-links">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li><a href="tel:04236863333"><i class="fas fa-phone"></i> 042-36863333</a></li>
+                        <li><a href="tel:03306863355"><i class="fas fa-phone"></i> 0330-6863355</a></li>
+                        <li><a href="mailto:info@shahiqila.com"><i class="fas fa-envelope"></i> Email Us</a></li>
+                        <li><a href="#contact"><i class="fas fa-map-marker-alt"></i> G.T Road, Lahore</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Copyright -->
+            <div class="royal-copyright">
+                <p>© 2025 Shahi Qila Restaurant. All Rights Reserved.</p>
+                <p>Serving Royal Pakistani Cuisine Since 1985</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-crown"></i>';
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-crown"></i>';
+            });
+        });
+
+        // Smooth scrolling with royal effect
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 120,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Create royal stars
+        function createRoyalStars() {
+            const starsContainer = document.createElement('div');
+            starsContainer.style.position = 'fixed';
+            starsContainer.style.top = '0';
+            starsContainer.style.left = '0';
+            starsContainer.style.width = '100%';
+            starsContainer.style.height = '100%';
+            starsContainer.style.pointerEvents = 'none';
+            starsContainer.style.zIndex = '0';
+            
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                star.style.width = Math.random() * 4 + 'px';
+                star.style.height = star.style.width;
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 4 + 's';
+                star.style.opacity = Math.random() * 0.5 + 0.1;
+                star.style.animationDuration = Math.random() * 3 + 2 + 's';
+                
+                starsContainer.appendChild(star);
+            }
+            
+            document.body.appendChild(starsContainer);
+        }
+
+        // Initialize stars
+        createRoyalStars();
+
+        // Add royal glow to current navigation link
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                    link.style.color = 'var(--royal-gold)';
+                    link.style.textShadow = '0 0 10px rgba(245, 197, 66, 0.5)';
+                }
+            });
+        });
+
+        // Phone button click handler
+        document.querySelector('.royal-phone').addEventListener('click', function() {
+            window.location.href = 'tel:03306863355';
+        });
+
+        // Add royal effect to menu items on hover
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuItems = document.querySelectorAll('.royal-menu-item');
+            
+            menuItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.zIndex = '10';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.zIndex = '1';
+                });
+            });
+        });
+
+        // Add subtle animation to category headers
+        const categoryHeaders = document.querySelectorAll('.category-header');
+        categoryHeaders.forEach(header => {
+            header.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateX(10px)';
+            });
+            
+            header.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateX(0)';
+            });
+        });// ===============================================
+// ROYAL 3D CAROUSEL GALLERY - Add to end of script
+// ===============================================
+
+// Your restaurant photos - REPLACE THESE WITH YOUR ACTUAL PHOTO URLs
+const restaurantPhotos = [
+    {
+        url: 'https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyyTmCEAu0atk_ks12Ej9ipoNowKUQdI5i-GbqhzwDb8mlJEzegIbdXbROnc5ouXXBlgj0O2D1KCsPWDirSU9eLbkeYCVwGqRLvet_-raQq5yVKCgWyBskq928j2hde6DSw8Ke26w=w172-h224-p-k-no', // Restaurant interior
+        title: 'Chicken Chili Dry Sauteed String Beans',
+        desc: 'Royals Feast'
+    },
+    {
+        url: 'https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyvJE1A1X8dCDDC2OT6G4SbQleNsb4Hx967_7fCT41FrsNyNHAGbE9FYcm47J--F7d226oXAkns2l0ovY58TrnYxk8UOd8TA_gxS7vhukvsvrti_ZnhPw-u_kxZVmVf8hU5wYmLKQ=w172-h224-p-k-no', // Food presentation
+        title: 'Cakes',
+        desc: 'Beautifully plated'
+    },
+    {
+        url: 'https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyyJAYFILnYkHeKvgUOysEQJJpzYDcxQwAzcoPJkHqDK8iNdpOXBBaFB_L0j0XcOG2XtRZ4uWg8LNjox6uNmfiQjb_-LXM59d27DeRwEmlCVOMf8Z_1sTUjIw4PKUvUChok3-a4kA=w172-h224-p-k-no', // Restaurant setup
+        title: 'FineChicken Kababs',
+        desc: 'Royals Feast'
+    },
+    {
+        url: 'https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwTqp_KHxui5HhomJ3ES1s7EeGmVzPLSwxXxErNKTkgw8rlD4HhfA31nzB5tCY6bz-TQeKE-DF5EAkmWEe0qv2P8bklPSmB_wGbp4vogMMv2VAjdVxDtz-Wxdod4cA1wODy70UH=w172-h224-p-k-no', // Open kitchen
+        title: 'Chicken Mnchurian',
+        desc: 'Royals Feast'
+    },
+    {
+        url: 'https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzSagjl3v8ZcUQOiDX043izxTYd-Oxq9UmDr4-3vG54FavtiyPsuK59GafPshAF3NSm2qbtTL0Ma6d82IYOxuDcET4miRTPEsz2HHuoAsvRm6gjhNBVUlD5qjc1c5hikMenGnL0xA=w172-h224-p-k-no', // Tandoor
+        title: 'BBQ Plate',
+        desc: 'Royals Feast'
+    },
+    {
+        url: 'https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx6NT4Rt0NDhfWVE-8ccyK2Qc_RYQSbZ47wHSPf4n_G8GMO9sQYCPahwNAVZDnGdL0GqHoqpF7I9kJjMchR8tG9H1FfwZR8uaJlcyGZ0OvvewvonkQxmn9c3wk6SxXbDL5zRoKt3Q=w172-h224-p-k-no', // Bar area
+        title: 'Lhore Shahi Qila Speacial pizza',
+        desc: 'Royals Feast'
+    },
+    {
+        url: 'https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy3iqFR34DOiUldsXHqoLmpj-Z-TSJxNqw58B_OCb8Ff8Qv9E9MiX0d2smduvsaeQ5JvUHjIT07WKVGeKISX0_d7G4JC3K6dKhtViml58p31Plz49hzVGk_yh6SlBAbob89P48=w172-h224-p-k-no', // Cooking
+        title: 'Brownie with lce Cream',
+        desc: 'Royals Feast'
+    },
+    {
+        url: 'https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzC-8PGdtu1Ole5oZVas1tW7PYDIRUVWDXWSTsSrQl9ycMOylq7fjnTOZ7xOPtwebCJiwAcf-HuMrBMYRUNpRs9V_gBNOPLebXa3291JBTswZZMdZ8XT3e-2Zuyicswd-OSmJNm=w172-h224-p-k-no', // Desserts
+        title: 'Matka Mutton Curry',
+        desc: 'Royals Feast'
+    },
+    {
+        url: 'https://lh3.googleusercontent.com/gps-cs-s/AG0ilSykLx1Ayz0SMDGazal1g4jJehlt-wzBxQAj_rtX7kEgdf32d0AN3jx5BqEWLugkXc5ElYQRkW-_JYxqmQ98sPgTOZql1CO61OEPj4SvqgJjZxpngG5lnU2aV3o0nFxdqHNDO83t2Q=w172-h224-p-k-no', // Banquet
+        title: 'Kachumber Salad',
+        desc: 'Royals Feast'
+    },
+    {
+        url: 'https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxPapuv0JzAQTE6hn3t_PZlQkKwtSkXr7nGvmKvdNzVzinJeiyQcIf4CbQ0XOdJ-O15k5bBmhT3kd1F_S1F1y49wAXSzxDD6K-b0K4gVYv4aavUu3UNL29ozU7ZsJ3eG2JIcjCmTQ=w172-h224-p-k-no', // Outdoor
+        title: 'Shataki Chicken',
+        desc: 'Royals Feast'
+    },
+    {
+        url: 'https://lh3.googleusercontent.com/gps-cs-s/AG0ilSynJ8u0mf0UnxzwKk_9ji8v7QQejYtpwMDQfQ9svywH5G0eBmDVBcavkyEjQj9cyEeTFgVDrSO0lKoVTb4qZW8TagKk8vfuRHkAUYB84MwP2PCUszyqPxZighUuKJvvuiXfNg1Olg=w172-h224-p-k-no', // Outdoor
+        title: 'Rasiaan Salad',
+        desc: 'Royals Feast'
+    },
+    {
+        url: 'https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwuFpNDNmCidxSnT1UDAXWqE9ihB2ht4ulvLSjHGpxDBaO_imG_QBhxbvlS9ZmN1zKP3mMSNaTHKaW58U6s5I3XNUtFCMnOYfH4IZuxOpWUlbO0BSgQUHbHp8qz-WgFSVKpIGM=w172-h224-p-k-no', // Outdoor
+        title: 'Rashmi Malai Chicken Tikka',
+        desc: 'Royals Feast'
+    },
+    {
+        url: 'https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwvOFXaUTYjIkY6iqJxbfAExQEM7H-WMXMPVq6igTO0yZL1qFuaDgU5ZL4APWBAjPd49HQaLFLvR_ZLf_tqLEGqB-DkDVNJExtjv1IDlQ5Rgj3FaSUfyYcoH_p6ENiuIr1QDHvs=w172-h224-p-k-no', // Outdoor
+        title: 'Pakistani Omelette',
+        desc: 'Royals Feast'
+    },
+    {
+        url: 'https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxZI0xMiQHa7_9wvCOre9bHlr-BTJ44TSelYMsDsW90x6w7sks6NaumMIQ1GqHZeIYCRmWnD91eTD3FM0ILgQBOJxsdcygFdKIP4mz2ZQRNX32FgM5HOtn8e-lCvpFSymsHzvw=w172-h224-p-k-no', // Outdoor
+        title: 'Kalonji Nan',
+        desc: 'Royals Feast'
+    },
+    {
+        url: 'https://lh3.googleusercontent.com/p/AF1QipNSxvFy2_zlSjgR31bvvc6ziXP8wye8gIg_RmTF=w172-h224-p-k-no', // Outdoor
+        title: 'Sandwichs',
+        desc: 'Royals Feast'
+    },
+    {
+        url: 'https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwhBKBeAsjtvun6bFCsFUAhFwYPQ1IFsTJFDGUEyTuOPcFjc9gvi7Xo_QoYXIdIdEYzZ6TiCXd2pd2pTwEh8RJ7jVPpwz3JS7ebDAXbgc6D-cfU-YQ4iJSBD7MB-gCHDLBmvak7zQ=w172-h224-p-k-no', // Outdoor
+        title: 'Rice',
+        desc: 'Royals Feast'
+    }
+];
+
+// Create Gallery HTML
+const galleryHTML = `
+<section class="royal-3d-showcase" id="gallery">
+    <div class="container">
+        <div class="section-title">
+            <h2>ROYAL SHOWCASE</h2>
+            <p class="script-font" style="font-size: 2rem; margin-top: 20px;">Experience Our Majesty</p>
+        </div>
+        
+        <div class="showcase-3d">
+            <div class="showcase-track">
+                <!-- Left (Previous) Image -->
+                <div class="showcase-card side-card left-card" id="leftCard">
+                    <div class="card-image"></div>
+                    <div class="card-overlay">
+                        <span class="nav-hint">Previous</span>
+                    </div>
+                </div>
+                
+                <!-- Arrow Button - Left -->
+                <button class="side-arrow-btn prev-arrow" id="prevBtn">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                
+                <!-- Center (Current) Image -->
+                <div class="showcase-card center-card" id="centerCard">
+                    <div class="card-image"></div>
+                    <div class="card-info">
+                        <h3 id="centerTitle">Royal Dining</h3>
+                        <div class="image-counter">
+                            <span id="currentNum">1</span> / <span id="totalNum">10</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Arrow Button - Right -->
+                <button class="side-arrow-btn next-arrow" id="nextBtn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                
+                <!-- Right (Next) Image -->
+                <div class="showcase-card side-card right-card" id="rightCard">
+                    <div class="card-image"></div>
+                    <div class="card-overlay">
+                        <span class="nav-hint">Next</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Navigation Controls - Dots Only -->
+            <div class="showcase-controls">
+                <div class="dots-container" id="dotsContainer"></div>
+            </div>
+        </div>
+    </div>
+</section>
+`;
+
+// Add gallery after menu section
+const menuSection = document.querySelector('#menu');
+menuSection.insertAdjacentHTML('afterend', galleryHTML);
+
+// Add Gallery CSS
+const galleryCSS = `
+.royal-3d-showcase {
+    background: linear-gradient(to bottom, rgba(10,8,6,0.98), rgba(26,22,18,0.99));
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.royal-3d-showcase:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--royal-gold), transparent);
+}
+
+.showcase-3d {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    perspective: 1500px;
+}
+
+.showcase-track {
+    position: relative;
+    height: 450px;
+    margin-bottom: 50px;
+    transform-style: preserve-3d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.showcase-card {
+    position: absolute;
+    width: 320px;
+    height: 450px;
+    top: 50%;
+    transform-origin: center;
+    transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.1);
+    background: linear-gradient(135deg, rgba(26,22,18,0.5), rgba(10,8,6,0.5));
+    border: 1px solid rgba(245,197,66,0.2);
+}
+
+/* Image enhancement filters */
+.showcase-card .card-image {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    filter: contrast(1.15) saturate(1.1) brightness(1.05) drop-shadow(inset 0 0 20px rgba(0,0,0,0.3));
+    transition: all 0.5s ease;
+    box-shadow: inset 0 0 30px rgba(0,0,0,0.4);
+}
+
+.showcase-card:hover .card-image {
+    filter: contrast(1.35) saturate(1.25) brightness(1.15) drop-shadow(inset 0 0 10px rgba(245,197,66,0.2));
+    transform: scale(1.05);
+}
+
+/* Left Card (Previous) */
+.side-card.left-card {
+    left: 0;
+    transform: translateY(-50%) rotateY(30deg) rotateX(5deg) scale(0.82);
+    opacity: 0.65;
+    z-index: 1;
+    filter: brightness(0.85);
+}
+
+.side-card.left-card:hover {
+    transform: translateY(-50%) rotateY(22deg) rotateX(3deg) scale(0.88);
+    opacity: 0.85;
+    filter: brightness(0.95);
+}
+
+/* Center Card (Current) */
+.center-card {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: rotateY(0deg) rotateX(0deg) scale(1);
+    opacity: 1;
+    z-index: 3;
+    border: 3px solid var(--royal-gold);
+    box-shadow: 
+        0 40px 80px rgba(0,0,0,0.9),
+        0 0 60px rgba(245,197,66,0.5),
+        inset 0 1px 0 rgba(255,255,255,0.15);
+    background: linear-gradient(135deg, rgba(100,27,46,0.3), rgba(26,22,18,0.5));
+}
+
+.center-card:hover {
+    transform: rotateY(0deg) rotateX(-2deg) scale(1.06);
+    border-color: var(--light-gold);
+    box-shadow: 
+        0 50px 100px rgba(0,0,0,0.95),
+        0 0 80px rgba(245,197,66,0.7),
+        inset 0 1px 0 rgba(255,255,255,0.2);
+}
+
+/* Right Card (Next) */
+.side-card.right-card {
+    right: 0;
+    left: auto;
+    transform: translateY(-50%) rotateY(-30deg) rotateX(5deg) scale(0.82);
+    opacity: 0.65;
+    z-index: 1;
+    filter: brightness(0.85);
+}
+
+.side-card.right-card:hover {
+    transform: translateY(-50%) rotateY(-22deg) rotateX(3deg) scale(0.88);
+    opacity: 0.85;
+    filter: brightness(0.95);
+}
+
+/* Card Overlay */
+.card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    padding: 20px;
+    color: var(--light-gold);
+    transform: translateY(100%);
+    transition: transform 0.4s ease;
+}
+
+.showcase-card:hover .card-overlay {
+    transform: translateY(0);
+}
+
+.nav-hint {
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    color: var(--royal-gold);
+    display: block;
+    text-align: center;
+}
+
+/* Center Card Info */
+.card-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    padding: 25px;
+    color: white;
+    transform: translateY(0);
+    transition: transform 0.4s ease;
+}
+
+.center-card:hover .card-info {
+    transform: translateY(-10px);
+}
+
+.card-info h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.8rem;
+    color: var(--royal-gold);
+    margin-bottom: 8px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+.card-info p {
+    font-size: 1.1rem;
+    color: var(--light-gold);
+    margin-bottom: 15px;
+    opacity: 0.9;
+}
+
+.image-counter {
+    display: inline-block;
+    background: rgba(0,0,0,0.6);
+    color: var(--royal-gold);
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    border: 1px solid rgba(245,197,66,0.4);
+}
+
+/* Side Arrow Buttons */
+.side-arrow-btn {
+    position: absolute;
+    top: 50%;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(245,197,66,0.15), rgba(100,27,46,0.15));
+    border: 1.5px solid var(--royal-gold);
+    color: var(--royal-gold);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    padding: 0;
+    transform: translateY(-50%);
+}
+
+.side-arrow-btn:hover {
+    background: linear-gradient(135deg, rgba(245,197,66,0.3), rgba(100,27,46,0.2));
+    color: var(--light-gold);
+    transform: translateY(-50%) scale(1.15);
+    box-shadow: 0 8px 20px rgba(245,197,66,0.4);
+}
+
+.side-arrow-btn:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+.prev-arrow {
+    left: 5px;
+}
+
+.next-arrow {
+    right: 5px;
+}
+
+/* Controls - Dots only */
+.showcase-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.dots-container {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(245,197,66,0.3);
+    border: 2px solid var(--royal-gold);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot:hover {
+    transform: scale(1.3);
+    background: rgba(245,197,66,0.6);
+}
+
+.dot.active {
+    background: var(--royal-gold);
+    transform: scale(1.4);
+    box-shadow: 0 0 15px rgba(245,197,66,0.8);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .showcase-track {
+        height: 400px;
+    }
+    
+    .showcase-card {
+        width: 280px;
+        height: 400px;
+    }
+    
+    .side-card.left-card {
+        left: 20%;
+    }
+    
+    .side-card.right-card {
+        left: 80%;
+    }
+}
+
+@media (max-width: 768px) {
+    .royal-3d-showcase {
+        padding: 50px 0;
+    }
+    
+    .showcase-3d {
+        max-width: 100%;
+    }
+    
+    .showcase-track {
+        height: 300px;
+        margin-bottom: 40px;
+        gap: 15px;
+    }
+    
+    .showcase-card {
+        width: 200px;
+        height: 300px;
+    }
+    
+    .side-card.left-card {
+        left: 0;
+        transform: translateY(-50%) rotateY(28deg) rotateX(5deg) scale(0.75);
+        opacity: 0.6;
+    }
+    
+    .side-card.right-card {
+        right: 0;
+        left: auto;
+        transform: translateY(-50%) rotateY(-28deg) rotateX(5deg) scale(0.75);
+        opacity: 0.6;
+    }
+    
+    .center-card {
+        position: relative;
+        left: auto;
+        top: auto;
+        width: 200px;
+        height: 300px;
+        transform: none;
+    }
+    
+    .card-info h3 {
+        font-size: 1.1rem;
+    }
+    
+    .card-info p {
+        font-size: 0.9rem;
+    }
+    
+    .side-arrow-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+    }
+    
+    .prev-arrow {
+        left: 5px;
+    }
+    
+    .next-arrow {
+        right: 5px;
+    }
+}
+
+@media (max-width: 576px) {
+    .royal-3d-showcase {
+        padding: 30px 0;
+        overflow: visible;
+    }
+    
+    .showcase-3d {
+        max-width: 100%;
+        padding: 20px 15px;
+        perspective: 800px;
+    }
+    
+    .showcase-track {
+        position: relative;
+        height: auto;
+        margin-bottom: 40px;
+        transform-style: flat;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0;
+    }
+    
+    .showcase-card {
+        position: relative;
+        width: 100%;
+        max-width: 280px;
+        height: 280px;
+        top: auto;
+        left: auto;
+        margin: 0 auto;
+        border-radius: 15px;
+    }
+    
+    /* Hide side cards completely on mobile */
+    .side-card.left-card {
+        display: none !important;
+    }
+    
+    .side-card.right-card {
+        display: none !important;
+    }
+    
+    /* Center card full width on mobile */
+    .center-card {
+        position: relative;
+        left: auto;
+        top: auto;
+        width: 100%;
+        height: 280px;
+        transform: none !important;
+        opacity: 1;
+        border: 2px solid var(--royal-gold);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+    }
+    
+    .center-card:hover {
+        transform: none !important;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+    }
+    
+    .card-image {
+        width: 100%;
+        height: 100%;
+        filter: contrast(1.15) saturate(1.1) brightness(1.05);
+    }
+    
+    .card-info {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        padding: 12px;
+        background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.5));
+        transform: none !important;
+    }
+    
+    .card-info h3 {
+        font-size: 1rem;
+        margin-bottom: 4px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    }
+    
+    .card-info p {
+        font-size: 0.75rem;
+        margin-bottom: 6px;
+        opacity: 0.8;
+    }
+    
+    .image-counter {
+        font-size: 0.75rem;
+        padding: 4px 12px;
+        background: rgba(0,0,0,0.7);
+        border-radius: 15px;
+    }
+    
+    /* Hide/Reposition side arrows on mobile */
+    .side-arrow-btn {
+        position: fixed;
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+        border-radius: 50%;
+        top: 50%;
+        z-index: 50;
+        transform: translateY(-50%);
+    }
+    
+    .prev-arrow {
+        left: 8px;
+    }
+    
+    .next-arrow {
+        right: 8px;
+    }
+    
+    /* Dots container */
+    .showcase-controls {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        padding: 0 10px;
+    }
+    
+    .dots-container {
+        display: flex;
+        gap: 6px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .dot {
+        width: 8px;
+        height: 8px;
+        border: 1.5px solid var(--royal-gold);
+    }
+    
+    .dot.active {
+        width: 8px;
+        height: 8px;
+        transform: scale(1.3);
+    }
+}
+`;
+
+// Add CSS to page
+const style = document.createElement('style');
+style.textContent = galleryCSS;
+document.head.appendChild(style);
+
+// Initialize Gallery
+let currentIndex = 0;
+
+function initGallery() {
+    const leftCard = document.getElementById('leftCard');
+    const centerCard = document.getElementById('centerCard');
+    const rightCard = document.getElementById('rightCard');
+    const centerTitle = document.getElementById('centerTitle');
+    const centerDesc = document.getElementById('centerDesc');
+    const currentNum = document.getElementById('currentNum');
+    const totalNum = document.getElementById('totalNum');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const dotsContainer = document.getElementById('dotsContainer');
+    
+    const totalImages = restaurantPhotos.length;
+    totalNum.textContent = totalImages;
+    
+    // Create dots
+    for (let i = 0; i < totalImages; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'dot';
+        dot.dataset.index = i;
+        if (i === currentIndex) dot.classList.add('active');
+        
+        dot.addEventListener('click', () => {
+            currentIndex = i;
+            updateGallery();
+        });
+        
+        dotsContainer.appendChild(dot);
+    }
+    
+    // Update gallery
+    function updateGallery() {
+        const prevIndex = (currentIndex - 1 + totalImages) % totalImages;
+        const nextIndex = (currentIndex + 1) % totalImages;
+        
+        // Update images
+        leftCard.querySelector('.card-image').style.backgroundImage = `url('${restaurantPhotos[prevIndex].url}')`;
+        centerCard.querySelector('.card-image').style.backgroundImage = `url('${restaurantPhotos[currentIndex].url}')`;
+        rightCard.querySelector('.card-image').style.backgroundImage = `url('${restaurantPhotos[nextIndex].url}')`;
+        
+        // Update info
+        centerTitle.textContent = restaurantPhotos[currentIndex].title;
+        centerDesc.textContent = restaurantPhotos[currentIndex].desc;
+        currentNum.textContent = currentIndex + 1;
+        
+        // Update dots
+        document.querySelectorAll('.dot').forEach((dot, i) => {
+            dot.classList.toggle('active', i === currentIndex);
+        });
+    }
+    
+    // Navigation functions
+    function nextImage() {
+        currentIndex = (currentIndex + 1) % totalImages;
+        updateGallery();
+    }
+    
+    function prevImage() {
+        currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+        updateGallery();
+    }
+    
+    // Event listeners for buttons
+    prevBtn.addEventListener('click', prevImage);
+    nextBtn.addEventListener('click', nextImage);
+    
+    // Event listeners for side cards
+    leftCard.addEventListener('click', prevImage);
+    rightCard.addEventListener('click', nextImage);
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') prevImage();
+        if (e.key === 'ArrowRight') nextImage();
+    });
+    
+    // Auto slide (optional)
+    let autoSlide = setInterval(nextImage, 4000);
+    
+    // Pause on hover
+    const gallery = document.querySelector('.royal-3d-showcase');
+    gallery.addEventListener('mouseenter', () => clearInterval(autoSlide));
+    gallery.addEventListener('mouseleave', () => {
+        autoSlide = setInterval(nextImage, 4000);
+    });
+    
+    // Initialize
+    updateGallery();
+}
+
+// Add to navigation
+function addGalleryToNav() {
+    const navLinks = document.getElementById('navLinks');
+    const galleryNavItem = document.createElement('li');
+    galleryNavItem.innerHTML = '<a href="#gallery">Royal Gallery</a>';
+    
+    // Insert after Royal Feast link
+    const menuLink = document.querySelector('a[href="#menu"]').parentElement;
+    navLinks.insertBefore(galleryNavItem, menuLink.nextElementSibling);
+}
+
+// Initialize when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    // Add navigation link
+    addGalleryToNav();
+    
+    // Initialize gallery
+    setTimeout(initGallery, 1000);
+});
+
+// INSTRUCTIONS TO ADD YOUR REAL PHOTOS:
+// =====================================
+// 
+// 1. Take photos of your restaurant with your phone/camera
+// 2. Upload them to a free service:
+//    - ImgBB.com (Recommended - free, no account needed)
+//    - Google Drive (make folder public)
+//    - Dropbox (public folder)
+// 
+// 3. Get direct image URLs (should end with .jpg, .png, etc.)
+// 
+// 4. Replace the current image URLs in the 'restaurantPhotos' array:
+//    Example:
+//    {
+//        url: 'https://i.ibb.co/your-image-code/photo1.jpg', // YOUR ACTUAL PHOTO URL
+//        title: 'Shahi Qila Dining',
+//        desc: 'Our main dining area'
+//    }
+// 
+// 5. Update titles and descriptions
+
+// ============================================
+// MENU NAVIGATION CONTROL
+// ============================================
+
+function activateMenuCategory(categoryId) {
+    console.log('=== Activating category:', categoryId);
+    
+    const menuNavBtns = document.querySelectorAll('.menu-nav-btn');
+    const allCategories = document.querySelectorAll('.royal-category');
+    
+    console.log('Total menu buttons found:', menuNavBtns.length);
+    console.log('Total categories found:', allCategories.length);
+    
+    // Remove active class from all buttons
+    menuNavBtns.forEach(btn => {
+        btn.classList.remove('active');
+    });
+    
+    // Hide all categories
+    allCategories.forEach(cat => {
+        cat.classList.remove('active');
+        cat.style.display = 'none';
+    });
+    
+    // Activate the selected button
+    const activeBtn = document.querySelector(`.menu-nav-btn[data-category="${categoryId}"]`);
+    if (activeBtn) {
+        activeBtn.classList.add('active');
+        console.log('✓ Button activated:', categoryId);
+    } else {
+        console.error('✗ Button not found for:', categoryId);
+    }
+    
+    // Show and activate the selected category
+    const activeCategory = document.querySelector(`.royal-category[data-category="${categoryId}"]`);
+    if (activeCategory) {
+        activeCategory.classList.add('active');
+        activeCategory.style.display = 'block';
+        console.log('✓ Category shown:', categoryId);
+    } else {
+        console.error('✗ Category not found for:', categoryId);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('=== DOM Content Loaded ===');
+    
+    const menuNavBtns = document.querySelectorAll('.menu-nav-btn');
+    console.log('Menu buttons available:', menuNavBtns.length);
+    
+    // Display all button attributes for debugging
+    menuNavBtns.forEach((btn, i) => {
+        const category = btn.getAttribute('data-category');
+        console.log(`Button ${i}:`, category);
+    });
+    
+    // Set first category as active on page load
+    if (menuNavBtns.length > 0) {
+        const firstCategory = menuNavBtns[0].getAttribute('data-category');
+        console.log('Activating first category:', firstCategory);
+        activateMenuCategory(firstCategory);
+    }
+    
+    // Add click listeners to all menu nav buttons
+    menuNavBtns.forEach((btn, index) => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const categoryId = this.getAttribute('data-category');
+            console.log('=== CLICK EVENT ===');
+            console.log('Button clicked - category:', categoryId);
+            activateMenuCategory(categoryId);
+        });
+    });
+    
+    console.log('=== Menu Navigation Initialized ===');
+});
+
+// ============================================
+// FIX ANCHOR LINKS FOR FIXED HEADER
+// ============================================
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href === '#') return;
+            
+            const target = document.querySelector(href);
+            if (target) {
+                e.preventDefault();
+                const headerHeight = document.querySelector('header').offsetHeight;
+                const targetPosition = target.offsetTop - headerHeight - 20;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+});
+    </script>
+    <!-- 
+    Fonts: Google Fonts - SIL Open Font License (Free for Commercial Use)
+    Icons: Font Awesome Free - MIT License (Free for Commercial Use)
+    Images: Pexels - Free for Commercial Use, No Attribution Required
+-->
+</body>
+</html>
+ this teh code but i want soem changes it  some that i will tell only  do teh things i tell you  do not addd or substeret anything yourself  change one when teh phone interface happpenesds  remove the line around the loge on the hero seact o nly and incese the logo size to the best leangth and change is the change the garally image dissplay change it Skip to content
+ 
+Search Gists
+Search...
+
+All gists
+Back to GitHub
+
+@Tahira-Ramzan
+@CodeMyUI
+CodeMyUI/index.html
+Created 5 years ago • Report abuse
+
+Subscribe
+
+Star
+1
+(1)
+
+Fork
+1
+(1)
+Code
+Revisions
+1
+Stars
+1
+Forks
+1
+
+Embed
+Clone this repository at &lt;script src=&quot;https://gist.github.com/CodeMyUI/e348a262c74d021b8e4b6cb4256042d5.js&quot;&gt;&lt;/script&gt;
+<script src="https://gist.github.com/CodeMyUI/e348a262c74d021b8e4b6cb4256042d5.js"></script>
+
+Download ZIP
+Turning pages with CSS
+Raw
+index.html
+<div class="imgLoader"></div>
+
+<div class="container">
+
+  <h1 class="title">
+    Turning pages<br>with css
+  </h1>
+
+  <div class="credit">
+    * Images loaded randomly from Picsum.photos
+  </div>
+
+  <div class="book">
+    <div class="gap"></div>
+    <div class="pages">
+      <div class="page"></div>
+      <div class="page"></div>
+      <div class="page"></div>
+      <div class="page"></div>
+      <div class="page"></div>
+      <div class="page"></div>
+    </div>
+    <div class="flips">
+      <div class="flip flip1">
+        <div class="flip flip2">
+          <div class="flip flip3">
+            <div class="flip flip4">
+              <div class="flip flip5">
+                <div class="flip flip6">
+                  <div class="flip flip7"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<a href="https://twitter.com/amit_sheen" class="twitterLink" target="_top">
+   <img src="https://assets.codepen.io/1948355/twitterLogo2.png" />
+</a>
+Raw
+style.scss
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+
+* {
+    padding: 0;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Indie Flower', cursive;
+    background-color: #eee;
+    color: #555;
+    text-align: center;
+    padding: 4em 0;
+}
+
+$bookAngle: 60deg;
+$speed: 5s;
+$borderColor: #555;
+
+$images:
+    url('https://picsum.photos/420/300?random=1'),
+    url('https://picsum.photos/420/300?random=2'),
+    url('https://picsum.photos/420/300?random=3'),
+    url('https://picsum.photos/420/300?random=4'),
+    url('https://picsum.photos/420/300?random=5'), 
+    url('https://picsum.photos/420/300?random=1');
+
+// Preload to images
+.imgLoader {
+    position: fixed;
+    animation: preLoad 1s steps(1);
+    width: 1px;
+    height: 1px;
+
+    @keyframes preLoad {
+        @for $i from 0 through 4 {
+            #{$i * 10}% { background-image: nth($images, ($i + 1)); }
+        }
+        100% { display: none; }
+    }
+}
+
+.container {
+    position: relative;
+    width: 420px;
+    border: #fff solid 2px;
+    border-radius: 4px;
+    height: 420px;
+}
+
+.title {
+    position: absolute;
+    top: 45px; left: 0;
+    width: 100%;
+    font-size: 2em;
+    font-weight: normal;
+    line-height: 1;
+}
+
+.credit {
+    position: absolute;
+    top: 100%; left: 0;
+    font-size: 0.9em;
+    text-align: left;
+
+}
+
+.book {
+    position: relative;
+    perspective: 630px;
+    perspective-origin: center 50px; 
+    transform: scale(1.2);
+    filter: drop-shadow(0px 10px 5px rgba(0,0,0,0.25));
+}
+
+.page {
+    width: 210px;
+    height: 300px;
+    background-color: #bbb;
+    position: absolute;
+    top: 0px; right: 50%;
+    transform-origin: 100% 100%;
+    border: solid $borderColor 2px;
+    background-size: 420px 300px;
+    background-position: center;
+
+    &:nth-child(1) {transform: rotateX($bookAngle) rotateY(3deg); }
+    &:nth-child(2) { transform: rotateX($bookAngle) rotateY(4.5deg); }
+    &:nth-child(3) {
+        transform: rotateX($bookAngle) rotateY(6deg);
+        animation: nextPage $speed*5 infinite $speed*-4.8 steps(1);
+        background-size: 420px 300px;
+        background-position: -2px -2px;
+    }
+
+    &:nth-child(4) { transform: rotateX($bookAngle) rotateY(177deg); }
+    &:nth-child(5) { transform: rotateX($bookAngle) rotateY(175.5deg); }
+    &:nth-child(6) {
+        transform: rotateX($bookAngle) rotateY(174deg);
+        overflow: hidden;
+
+        &::after {
+            content: '';
+            width: 210px;
+            height: 300px;
+            position: absolute;
+            top: 0px; right: 0%;
+            transform-origin: center;
+            transform: rotateY(180deg);
+            animation: nextPage $speed*5 $speed*-4 infinite steps(1);
+            background-size: 420px 300px;
+            background-position: 100% -2px;
+        }
+    }
+
+    @keyframes nextPage {
+        @for $i from 0 through 4 {
+            #{$i * 20}% { background-image: nth($images, ($i + 1)); }
+        }
+    }
+}
+
+.gap {
+    width: 10px;
+    height: 300px;
+    background: none;
+    transform: rotateX($bookAngle);
+    transform-origin: bottom;
+    position: absolute;
+    top: 0px; left: calc(50% - 5px);
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, 50%);
+        background-color: $borderColor;
+        width: 10px;
+        height: 5px;
+        border-radius: 50%;
+    }
+}
+
+.flip {
+    width: 32px;
+    height: 300px;
+    position: absolute;
+    top: 0px;
+    transform-origin: 100% 100%;
+    right: 100%;
+    border: solid $borderColor;
+    border-width: 2px 0px;
+    perspective: 4200px;
+    perspective-origin: center; 
+    transform-style: preserve-3d;
+    background-size: 420px 300px;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0px; right: 0%;
+        width: 100%; height: 100%;
+        transform-origin: center;
+        background-size: 420px 300px;
+    }
+
+    &.flip1 {
+        right: 50%;
+        animation: flip1 $speed infinite ease-in-out;
+        border-width: 2px 2px 2px 0;
+
+        &::after {
+            animation: nextFlip1 $speed*5 $speed*-4 infinite steps(1);
+        }
+    }
+
+    &:not(.flip1) {
+        right: calc(100% - 2px);
+        top: -2px;
+        transform-origin: right;
+        animation: flip2 $speed ease-in-out infinite;
+    }
+
+    @for $i from 2 through 7 {
+        &.flip#{$i}::after { animation: nextFlip#{$i} $speed*5 $speed*-4 infinite steps(1); }
+    }
+    
+    &.flip7 {
+        width: 30px;
+        border-width: 2px 0px 2px 2px;
+        &::after { animation: nextFlip7 $speed*5 $speed*-4 infinite steps(1); }
+    }
+
+    @keyframes flip1 {
+        0%, 20% { transform: rotateX($bookAngle) rotateY(6deg); }
+        80%, 100% { transform: rotateX($bookAngle) rotateY(174deg); }
+    }
+
+    @keyframes flip2 {
+        0%, 20% { transform: rotateY(0deg) translateY(0px); }
+        50% { transform: rotateY(-15deg) translateY(0px); }
+    }
+}
+
+@keyframes nextFlip1 {
+    @for $i from 0 through 4 {
+        #{$i * 20}% { background-image: nth($images, ($i + 1)); background-position: -178px -2px; transform: rotateY(0deg); }
+        #{10 + ($i * 20)}% { background-image: nth($images, ($i + 2)); background-position: -210px -2px; transform: rotateY(180deg); }
+    }
+}
+
+@for $i from 2 through 6 {
+    @keyframes nextFlip#{$i} {
+        @for $j from 0 through 4 {
+            #{$j * 20}% { background-image: nth($images, ($j + 1)); background-position: #{-148 + (($i - 2) * 30)}px -2px; transform: rotateY(0deg); }
+            #{((10 + ($j * 20)) + (($i - 1) * 0.5))}% { background-image: nth($images, ($j + 2)); background-position: #{-238 - (($i - 2) * 30)}px -2px; transform: rotateY(180deg); }
+        }
+    }
+}
+
+@keyframes nextFlip7 {
+    @for $i from 0 through 4 {
+        #{$i * 20}% { background-image: nth($images, ($i + 1)); background-position: -2px -2px; transform: rotateY(0deg); }
+        #{13 + ($i * 20)}% { background-image: nth($images, ($i + 2)); background-position: -388px -2px; transform: rotateY(180deg); }
+    }
+}
+
+.twitterLink {
+  position: fixed;
+  bottom: 0.5em; right: 0.5em;
+  & img {
+    width: 2em;
+    filter: grayscale(100%);
+    transition: filter 0.25s;
+    &:hover {
+      filter: grayscale(0%);
+    }
+  }
 }
