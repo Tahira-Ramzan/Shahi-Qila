@@ -2252,6 +2252,86 @@
     .hero-left div[style*="display: flex"] {
         justify-content: center;
     }
+} /* Hero Section Animation */
+@keyframes logoPulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 40px rgba(245, 197, 66, 0.6);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 70px rgba(245, 197, 66, 0.9);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.hero-left {
+    animation: slideInLeft 1s ease;
+}
+
+.hero-right {
+    animation: slideInRight 1s ease;
+}
+
+/* Responsive for mobile */
+@media (max-width: 992px) {
+    .hero .container {
+        flex-direction: column !important;
+        padding: 50px 30px !important;
+    }
+    
+    .hero-left {
+        max-width: 100% !important;
+        padding-right: 0 !important;
+        margin-bottom: 60px;
+    }
+    
+    .hero-right {
+        padding-left: 0 !important;
+        margin-top: 30px;
+    }
+    
+    .hero-left,
+    .hero-left .welcome-wrapper,
+    .hero-left h1,
+    .hero-left .royal-subtitle,
+    .hero-left p {
+        text-align: center !important;
+    }
+    
+    .hero-left .royal-divider {
+        justify-content: center !important;
+    }
+    
+    .hero-left div[style*="display: flex"] {
+        justify-content: center;
+    }
+    
+    .big-logo-wrapper img {
+        width: 250px !important;
+        height: 250px !important;
+    }
 }
     </style>
 </head>
@@ -2297,22 +2377,40 @@
 
     <main>
         <!-- Hero Section -->
-               <!-- Hero Section - Split Layout with BIG Logo on Left -->
+                       <!-- Hero Section - Content + Image on LEFT, BIG LOGO on RIGHT -->
         <section id="home" class="hero" style="background: linear-gradient(135deg, rgba(10,8,6,0.98) 0%, rgba(26,22,18,0.95) 100%); margin-top: 95px; min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden;">
             
             <!-- Decorative corner elements -->
             <div style="position: absolute; top: 20px; left: 20px; width: 150px; height: 150px; border-top: 2px solid var(--royal-gold); border-left: 2px solid var(--royal-gold); opacity: 0.3;"></div>
             <div style="position: absolute; bottom: 20px; right: 20px; width: 150px; height: 150px; border-bottom: 2px solid var(--royal-gold); border-right: 2px solid var(--royal-gold); opacity: 0.3;"></div>
             
-            <div class="container" style="display: flex; align-items: center; justify-content: space-between; max-width: 1400px; margin: 0 auto; padding: 0 50px; width: 100%;">
+            <div class="container" style="display: flex; align-items: center; justify-content: space-between; max-width: 1400px; margin: 0 auto; padding: 0 50px; width: 100%; flex-direction: row-reverse;">
                 
-                <!-- LEFT SIDE - BIG LOGO and Content -->
-                <div class="hero-left" style="flex: 1; padding-right: 60px; max-width: 600px;">
+                <!-- RIGHT SIDE - BIG LOGO Only -->
+                <div class="hero-right" style="flex: 1; display: flex; justify-content: center; align-items: center; padding-left: 60px;">
                     
-                    <!-- BIG LOGO at top -->
-                    <div class="big-logo-wrapper" style="margin-bottom: 30px;">
-                        <img src="logo.ico" alt="Shahi Qila Royal Logo" style="width: 200px; height: 200px; object-fit: contain; filter: drop-shadow(0 0 30px rgba(245, 197, 66, 0.5)); border-radius: 50%; border: 4px solid var(--royal-gold); padding: 10px; background: linear-gradient(135deg, rgba(245,197,66,0.1), rgba(212,160,23,0.1));">
+                    <!-- BIG LOGO with royal styling -->
+                    <div class="big-logo-wrapper" style="position: relative;">
+                        <!-- Main Logo -->
+                        <img src="logo.ico" alt="Shahi Qila Royal Logo" style="width: 350px; height: 350px; object-fit: contain; filter: drop-shadow(0 0 40px rgba(245, 197, 66, 0.6)); border-radius: 50%; border: 6px solid var(--royal-gold); padding: 20px; background: linear-gradient(135deg, rgba(245,197,66,0.15), rgba(212,160,23,0.15)); animation: logoPulse 3s ease-in-out infinite;">
+                        
+                        <!-- Decorative Crown Above Logo -->
+                        <i class="fas fa-crown" style="position: absolute; top: -30px; left: 50%; transform: translateX(-50%); color: var(--royal-gold); font-size: 3rem; filter: drop-shadow(0 0 20px gold);"></i>
+                        
+                        <!-- Floating Stars Around Logo -->
+                        <i class="fas fa-star" style="position: absolute; top: 20px; right: 20px; color: var(--royal-gold); font-size: 1.5rem; opacity: 0.6;"></i>
+                        <i class="fas fa-star" style="position: absolute; bottom: 20px; left: 20px; color: var(--royal-gold); font-size: 1.2rem; opacity: 0.4;"></i>
+                        
+                        <!-- Royal Text Below Logo -->
+                        <div style="position: absolute; bottom: -40px; left: 50%; transform: translateX(-50%); width: 100%; text-align: center;">
+                            <span style="font-family: 'Great Vibes', cursive; color: var(--light-gold); font-size: 2rem; display: block;">Royal Emblem</span>
+                            <span style="color: var(--royal-gold); font-size: 0.9rem; letter-spacing: 5px;">EST. 1985</span>
+                        </div>
                     </div>
+                </div>
+                
+                <!-- LEFT SIDE - All Content + Food Image -->
+                <div class="hero-left" style="flex: 1; padding-right: 60px; max-width: 650px;">
                     
                     <!-- Welcome Text -->
                     <div class="welcome-wrapper" style="text-align: left;">
@@ -2324,87 +2422,79 @@
                     </div>
                     
                     <!-- Main Title - SHAHI QILA -->
-                    <h1 style="font-family: 'Cinzel', serif; text-align: left; margin-bottom: 25px;">
-                        <span style="display: block; font-size: 5.5rem; font-weight: 800; color: var(--royal-gold); line-height: 1.1; text-shadow: 3px 3px 6px rgba(0,0,0,0.5);">SHAHI</span>
-                        <span style="display: block; font-size: 6rem; font-weight: 800; background: linear-gradient(45deg, var(--royal-gold), #FFD700); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1.1;">QILA</span>
+                    <h1 style="font-family: 'Cinzel', serif; text-align: left; margin-bottom: 15px;">
+                        <span style="display: block; font-size: 5rem; font-weight: 800; color: var(--royal-gold); line-height: 1.1; text-shadow: 3px 3px 6px rgba(0,0,0,0.5);">SHAHI</span>
+                        <span style="display: block; font-size: 5.5rem; font-weight: 800; background: linear-gradient(45deg, var(--royal-gold), #FFD700); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1.1;">QILA</span>
                     </h1>
                     
                     <!-- Subtitle -->
                     <div class="royal-subtitle" style="text-align: left; margin-bottom: 20px;">
                         <span class="script-font" style="font-size: 2rem; color: var(--light-gold); display: block;">The Royal Culinary Palace</span>
-                        <span style="font-size: 1.3rem; color: rgba(245, 197, 66, 0.8); font-style: italic; display: block;">of Lahore • Since 1985</span>
+                        <span style="font-size: 1.2rem; color: rgba(245, 197, 66, 0.8); font-style: italic; display: block;">of Lahore • Since 1985</span>
                     </div>
                     
-                    <!-- Description -->
-                    <p style="font-size: 1.1rem; color: var(--cream); line-height: 1.8; margin: 25px 0 30px; text-align: left; max-width: 500px;">
-                        Experience the authentic taste of Lahore's Royal Cuisine in a regal ambiance fit for kings. Every meal is a celebration of centuries-old recipes, crafted with royal precision.
-                    </p>
+                    <!-- FOOD IMAGE - SMALLER, on LEFT side with content -->
+                    <div style="display: flex; gap: 25px; margin: 25px 0; align-items: center; flex-wrap: wrap;">
+                        <!-- Small Food Image -->
+                        <div style="position: relative; width: 200px; flex-shrink: 0;">
+                            <img src="https://media.istockphoto.com/id/995903748/photo/smoked-and-spicy-tandoori-chicken-grilling-with-smoke.jpg" alt="Royal Dish" style="width: 100%; height: 130px; object-fit: cover; border-radius: 15px; border: 3px solid var(--royal-gold); box-shadow: 0 10px 20px rgba(0,0,0,0.3);">
+                            <div style="position: absolute; top: -8px; right: -8px; background: var(--royal-gold); color: var(--burgundy); padding: 3px 10px; border-radius: 20px; font-size: 0.7rem; font-weight: bold;">SIGNATURE</div>
+                        </div>
+                        
+                        <!-- Description text next to image -->
+                        <p style="font-size: 1rem; color: var(--cream); line-height: 1.6; flex: 1; margin: 0;">
+                            Experience the authentic taste of Lahore's Royal Cuisine in a regal ambiance fit for kings.
+                        </p>
+                    </div>
                     
                     <!-- Features as badges -->
-                    <div style="display: flex; gap: 15px; margin: 30px 0; flex-wrap: wrap;">
-                        <span style="background: rgba(245, 197, 66, 0.15); padding: 8px 20px; border-radius: 30px; border: 1px solid rgba(245, 197, 66, 0.3); color: var(--light-gold); display: flex; align-items: center; gap: 8px;">
+                    <div style="display: flex; gap: 12px; margin: 25px 0; flex-wrap: wrap;">
+                        <span style="background: rgba(245, 197, 66, 0.15); padding: 8px 18px; border-radius: 30px; border: 1px solid rgba(245, 197, 66, 0.3); color: var(--light-gold); display: flex; align-items: center; gap: 8px; font-size: 0.9rem;">
                             <i class="fas fa-utensils" style="color: var(--royal-gold);"></i> Mughal Cuisine
                         </span>
-                        <span style="background: rgba(245, 197, 66, 0.15); padding: 8px 20px; border-radius: 30px; border: 1px solid rgba(245, 197, 66, 0.3); color: var(--light-gold); display: flex; align-items: center; gap: 8px;">
+                        <span style="background: rgba(245, 197, 66, 0.15); padding: 8px 18px; border-radius: 30px; border: 1px solid rgba(245, 197, 66, 0.3); color: var(--light-gold); display: flex; align-items: center; gap: 8px; font-size: 0.9rem;">
                             <i class="fas fa-crown" style="color: var(--royal-gold);"></i> Royal Ambiance
                         </span>
-                        <span style="background: rgba(245, 197, 66, 0.15); padding: 8px 20px; border-radius: 30px; border: 1px solid rgba(245, 197, 66, 0.3); color: var(--light-gold); display: flex; align-items: center; gap: 8px;">
+                        <span style="background: rgba(245, 197, 66, 0.15); padding: 8px 18px; border-radius: 30px; border: 1px solid rgba(245, 197, 66, 0.3); color: var(--light-gold); display: flex; align-items: center; gap: 8px; font-size: 0.9rem;">
                             <i class="fas fa-star" style="color: var(--royal-gold);"></i> Since 1985
                         </span>
                     </div>
                     
+                    <!-- Full Description -->
+                    <p style="font-size: 1rem; color: var(--cream); line-height: 1.7; margin: 20px 0; text-align: left;">
+                        Every meal is a celebration of centuries-old recipes, crafted with royal precision for the modern connoisseur. From our tandoor to your table, experience the legacy of Mughal flavors.
+                    </p>
+                    
                     <!-- CTA Buttons -->
                     <div style="display: flex; gap: 20px; margin-top: 30px; flex-wrap: wrap;">
-                        <button class="royal-cta" style="background: linear-gradient(135deg, var(--royal-gold), var(--deep-gold)); color: var(--burgundy); border: none; padding: 16px 40px; font-size: 1.1rem; font-weight: 700; border-radius: 50px; cursor: pointer; display: flex; align-items: center; gap: 10px; box-shadow: 0 0 30px rgba(245,197,66,0.3);" onclick="document.getElementById('menu').scrollIntoView({behavior: 'smooth'})">
+                        <button class="royal-cta" style="background: linear-gradient(135deg, var(--royal-gold), var(--deep-gold)); color: var(--burgundy); border: none; padding: 15px 35px; font-size: 1rem; font-weight: 700; border-radius: 50px; cursor: pointer; display: flex; align-items: center; gap: 10px; box-shadow: 0 0 30px rgba(245,197,66,0.3);" onclick="document.getElementById('menu').scrollIntoView({behavior: 'smooth'})">
                             <span>Explore Menu</span>
                             <i class="fas fa-arrow-right"></i>
                         </button>
                         
-                        <a href="#location" style="background: transparent; color: var(--light-gold); border: 2px solid rgba(245, 197, 66, 0.3); padding: 14px 35px; font-size: 1.1rem; border-radius: 50px; text-decoration: none; display: flex; align-items: center; gap: 10px; transition: var(--transition);">
+                        <a href="#location" style="background: transparent; color: var(--light-gold); border: 2px solid rgba(245, 197, 66, 0.3); padding: 13px 30px; font-size: 1rem; border-radius: 50px; text-decoration: none; display: flex; align-items: center; gap: 10px; transition: var(--transition);">
                             <i class="fas fa-map-marker-alt" style="color: var(--royal-gold);"></i>
                             Find Us
                         </a>
                     </div>
                     
-                    <!-- Quick actions -->
-                    <div style="display: flex; gap: 25px; margin-top: 35px;">
-                        <a href="tel:03306863355" style="color: var(--light-gold); text-decoration: none; display: flex; align-items: center; gap: 8px;">
+                    <!-- Contact quick info -->
+                    <div style="display: flex; gap: 25px; margin-top: 30px;">
+                        <a href="tel:03306863355" style="color: var(--light-gold); text-decoration: none; display: flex; align-items: center; gap: 8px; font-size: 0.9rem;">
                             <i class="fas fa-phone-alt" style="color: var(--royal-gold);"></i>
                             <span>0330-6863355</span>
                         </a>
-                        <span style="color: var(--light-gold); display: flex; align-items: center; gap: 8px;">
+                        <span style="color: var(--light-gold); display: flex; align-items: center; gap: 8px; font-size: 0.9rem;">
                             <i class="fas fa-clock" style="color: var(--royal-gold);"></i>
-                            <span>12PM - 12AM</span>
+                            <span>12PM - 12AM Daily</span>
                         </span>
-                    </div>
-                </div>
-                
-                <!-- RIGHT SIDE - Food Image Only -->
-                <div class="hero-right" style="flex: 1; display: flex; justify-content: center; align-items: center; position: relative;">
-                    <div style="position: relative; width: 100%; max-width: 550px;">
-                        <!-- Main Food Image with Golden Border -->
-                        <img src="https://media.istockphoto.com/id/995903748/photo/smoked-and-spicy-tandoori-chicken-grilling-with-smoke.jpg" alt="Royal Tandoori Cuisine" style="width: 100%; height: auto; border-radius: 30px; border: 5px solid var(--royal-gold); box-shadow: 0 30px 50px rgba(0,0,0,0.6), 0 0 40px rgba(245,197,66,0.3); transform: rotate(2deg); transition: transform 0.5s ease;" onmouseover="this.style.transform='rotate(0deg) scale(1.02)'" onmouseout="this.style.transform='rotate(2deg)'">
-                        
-                        <!-- Corner Decorations -->
-                        <div style="position: absolute; top: -15px; left: -15px; width: 60px; height: 60px; border-top: 3px solid var(--royal-gold); border-left: 3px solid var(--royal-gold);"></div>
-                        <div style="position: absolute; bottom: -15px; right: -15px; width: 60px; height: 60px; border-bottom: 3px solid var(--royal-gold); border-right: 3px solid var(--royal-gold);"></div>
-                        
-                        <!-- Food Label -->
-                        <div style="position: absolute; bottom: 30px; left: 30px; background: linear-gradient(135deg, rgba(10,8,6,0.9), rgba(26,22,18,0.9)); padding: 15px 25px; border-radius: 15px; border-left: 4px solid var(--royal-gold); backdrop-filter: blur(5px);">
-                            <span style="font-family: 'Great Vibes', cursive; color: var(--royal-gold); font-size: 1.5rem; display: block;">Signature Dish</span>
-                            <span style="color: white; font-size: 1.2rem; font-weight: 600;">Tandoori Royal Platter</span>
-                        </div>
-                        
-                        <!-- Floating Stars -->
-                        <i class="fas fa-star" style="position: absolute; top: 20px; right: 20px; color: var(--royal-gold); font-size: 1.8rem; opacity: 0.6; filter: drop-shadow(0 0 10px gold);"></i>
-                        <i class="fas fa-star" style="position: absolute; top: 50%; left: -20px; color: var(--royal-gold); font-size: 1.2rem; opacity: 0.4;"></i>
                     </div>
                 </div>
             </div>
             
             <!-- Scroll Indicator -->
             <div class="scroll-indicator" style="position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 10px;">
-                <span style="font-size: 0.8rem; color: var(--light-gold); letter-spacing: 2px; writing-mode: vertical-rl; transform: rotate(180deg);">SCROLL</span>
+                <span style="font-size: 0.8rem; color: var(--light-gold); letter-spacing: 2px; writing-mode: vertical-rl; transform: rotate(180deg);">DISCOVER</span>
                 <div style="width: 45px; height: 45px; border: 2px solid rgba(245,197,66,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--royal-gold); animation: bounce 2s infinite;">
                     <i class="fas fa-chevron-down"></i>
                 </div>
