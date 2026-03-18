@@ -2152,7 +2152,7 @@
                 justify-content: center;
             }
         }
-      /*royal coner decoration*/
+           /*royal corner decoration*/
       .royal-corner {
     position: fixed;
     width: 100px;
@@ -2187,72 +2187,9 @@
     right: 0;
     border-bottom: 2px solid var(--royal-gold);
     border-right: 2px solid var(--royal-gold);
-}  /* xv*/
-      /* Hero Section Specific Styles */
-.hero-left {
-    animation: slideInLeft 1s ease;
 }
 
-.hero-right {
-    animation: slideInRight 1s ease;
-}
-
-@keyframes slideInLeft {
-    from {
-        opacity: 0;
-        transform: translateX(-50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes slideInRight {
-    from {
-        opacity: 0;
-        transform: translateX(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-/* Responsive for mobile */
-@media (max-width: 992px) {
-    .hero .container {
-        flex-direction: column !important;
-        padding: 50px 30px !important;
-    }
-    
-    .hero-left {
-        max-width: 100% !important;
-        padding-right: 0 !important;
-        margin-bottom: 50px;
-        text-align: center;
-    }
-    
-    .hero-left .welcome-wrapper,
-    .hero-left h1,
-    .hero-left .royal-subtitle,
-    .hero-left p {
-        text-align: center !important;
-    }
-    
-    .hero-left .royal-divider {
-        justify-content: center !important;
-    }
-    
-    .hero-left .big-logo-wrapper {
-        display: flex;
-        justify-content: center;
-    }
-    
-    .hero-left div[style*="display: flex"] {
-        justify-content: center;
-    }
-} /* Hero Section Animation */
+/* Hero Section Animations */
 @keyframes logoPulse {
     0%, 100% {
         transform: scale(1);
@@ -2294,29 +2231,34 @@
     animation: slideInRight 1s ease;
 }
 
-/* Responsive for mobile */
+/* Mobile Responsive Fixes */
 @media (max-width: 992px) {
     .hero .container {
         flex-direction: column !important;
-        padding: 50px 30px !important;
+        padding: 30px 20px !important;
     }
     
     .hero-left {
         max-width: 100% !important;
         padding-right: 0 !important;
-        margin-bottom: 60px;
+        margin-bottom: 50px;
+        order: 1 !important;
     }
     
     .hero-right {
         padding-left: 0 !important;
-        margin-top: 30px;
+        margin-top: 20px;
+        margin-bottom: 30px;
+        order: 2 !important;
     }
     
+    /* Center all text on mobile */
     .hero-left,
     .hero-left .welcome-wrapper,
     .hero-left h1,
     .hero-left .royal-subtitle,
-    .hero-left p {
+    .hero-left p,
+    .hero-left div[style*="text-align: left"] {
         text-align: center !important;
     }
     
@@ -2325,12 +2267,75 @@
     }
     
     .hero-left div[style*="display: flex"] {
-        justify-content: center;
+        justify-content: center !important;
     }
     
+    /* Adjust logo size for mobile */
     .big-logo-wrapper img {
         width: 250px !important;
         height: 250px !important;
+    }
+    
+    /* Adjust title sizes for mobile */
+    .hero-left h1 span:first-child {
+        font-size: 3.5rem !important;
+    }
+    
+    .hero-left h1 span:last-child {
+        font-size: 4rem !important;
+    }
+    
+    .hero-left .script-font {
+        font-size: 2rem !important;
+    }
+    
+    /* Make food image smaller on mobile */
+    .hero-left div[style*="width: 200px"] {
+        width: 150px !important;
+        margin: 0 auto !important;
+    }
+    
+    .hero-left div[style*="gap: 25px"] {
+        justify-content: center !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .big-logo-wrapper img {
+        width: 200px !important;
+        height: 200px !important;
+    }
+    
+    .hero-left h1 span:first-child {
+        font-size: 2.8rem !important;
+    }
+    
+    .hero-left h1 span:last-child {
+        font-size: 3.2rem !important;
+    }
+    
+    .hero-left .script-font {
+        font-size: 1.8rem !important;
+    }
+    
+    .hero-left div[style*="width: 200px"] {
+        width: 120px !important;
+    }
+    
+    .hero-left div[style*="width: 200px"] img {
+        height: 100px !important;
+    }
+    
+    /* Stack buttons on mobile */
+    .hero-left div[style*="gap: 20px"] {
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+    
+    .hero-left button,
+    .hero-left a[style*="border: 2px solid"] {
+        width: 100% !important;
+        justify-content: center !important;
     }
 }
     </style>
